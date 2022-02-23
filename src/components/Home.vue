@@ -1,5 +1,67 @@
 <template>
-<div>Home组件</div>
+  <div class="outer">
+    <div class="home-wrap">
+      <nav class="home-nav">
+        <div class="logo">
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-logo"></use>
+          </svg>
+        </div>
+        <ol>
+          <li><a href="tel:17397015285"> 联系我</a></li>
+          <li>
+            <router-link to="/doc"> 文档</router-link>
+          </li>
+        </ol>
+      </nav>
+      <main class="home-main">
+        <div class="container">
+          <ol class="article">
+            <li><p>UI组件库</p></li>
+            <li><p>基于vue3开发，简单易上手</p></li>
+            <li>
+              <button>
+                <router-link to="/doc">
+                  开始使用
+                </router-link>
+              </button>
+              <button>
+                <a href="">github</a>
+              </button>
+            </li>
+          </ol>
+          <div class="png">
+            <img src="../../public/a.jpg" alt="">
+          </div>
+        </div>
+      </main>
+      <footer class="footer">
+          <ol>
+            <li>
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-Vue"></use>
+              </svg>
+              <p>vue3</p>
+              <p>基于vue3开发</p>
+            </li>
+            <li>
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-ts"></use>
+              </svg>
+              <p>typescript</p>
+              <p>使用typescript书写</p>
+            </li>
+            <li>
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-easy"></use>
+              </svg>
+              <p>easy</p>
+              <p>简单明了易上手</p>
+            </li>
+          </ol>
+      </footer>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -11,5 +73,143 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.outer {
+  width: 100vw;
+  height: 100vh;
+  background-color: #ccd4df;
+}
 
+.home-wrap {
+  max-width: 1200px;
+  margin-right: auto;
+  margin-left: auto;
+  height: 100%;
+  > .home-nav {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 50px;
+    background: linear-gradient(90deg, rgba(110, 133, 173, 1) 0%, rgba(147, 165, 195, 1) 54%, rgba(153, 169, 200, 1) 100%);
+
+    > ol {
+      display: flex;
+      gap: 20px;
+    }
+  }
+
+  > .home-main {
+    width: 100%;
+    height: 50vh;
+    background: linear-gradient(90deg, rgba(110, 133, 173, 1) 0%, rgba(147, 165, 195, 1) 54%, rgba(153, 169, 200, 1) 100%);
+
+    > .container {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      top: 0;
+      left: 0;
+
+      > ol {
+        position: absolute;
+        top: 60px;
+        left: 50%;
+        transform: translateX(-150%);
+
+        & li:first-child {
+          color: #f8fcfd;
+          font-size: 2em;
+          margin-bottom: 30px;
+        }
+
+        & li:nth-child(2) {
+          color: #cedbe9;
+          margin-bottom: 30px;
+        }
+
+        & li:nth-child(3) {
+          color: #cedbe9;
+
+          > button {
+            padding: 5px 10px;
+            line-height: 1.5em;
+            text-align: center;
+            white-space: nowrap;
+            margin-right: 20px;
+            border-radius: 10px;
+            border: none;
+            background-color: #13192e;
+            color: #d6d9e0;
+          }
+        }
+      }
+
+      > .png {
+        width: 400px;
+
+        position: absolute;
+        top: 35%;
+        right: 10vw;
+        transform: translateY(-50%);
+
+        > img {
+          max-width: 100%;
+        }
+      }
+    }
+  }
+
+  > .footer {
+    margin-top: 50px;
+    >ol{
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      >li{
+        background-color: #f0f3fd;
+        width: 400px;
+        display: inline-grid;
+        grid-template-columns: 4em 1fr ;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        grid-gap: 30px;
+        justify-content: center;
+        align-items: center;
+        padding: 0 25px;
+        >.icon{
+          width: 4em;
+          height: 4em;
+          grid-column-start: 1;
+          grid-column-end: 2;
+          grid-row-start: 1;
+          grid-row-end: 5;
+        }
+        >p:nth-child(2){
+          grid-column-start: 2;
+          grid-column-end:3;
+          grid-row-start: 2;
+          grid-row-end: 3;
+        }
+        >p:nth-child(3){
+          grid-column-start: 2;
+          grid-column-end:3;
+          grid-row-start: 3;
+          grid-row-end: 4;
+        }
+        >p{
+          white-space: nowrap;
+        }
+      }
+    }
+
+  }
+}
+
+.icon {
+  width: 1.5em;
+  height: 1.5em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
 </style>
