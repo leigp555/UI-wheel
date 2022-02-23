@@ -18,16 +18,18 @@
     </div>
     <div class="content">
       <aside class="doc-aside" @click="toggle">
-        <router-link to="">介绍</router-link>
-        <router-link to="">安装</router-link>
-        <router-link to="">switch组件</router-link>
-        <router-link to="">button组件</router-link>
-        <router-link to="">dialog组件</router-link>
-        <router-link to="">tab组件</router-link>
-        <router-link to="">轮播组件</router-link>
-        <router-link to="">骨架图组件</router-link>
+        <router-link to="/intro">介绍</router-link>
+        <router-link to="/install">安装</router-link>
+        <router-link to="/switch">switch组件</router-link>
+        <router-link to="/button">button组件</router-link>
+        <router-link to="/dialog">dialog组件</router-link>
+        <router-link to="/tab">tab组件</router-link>
+        <router-link to="/carousel">轮播组件</router-link>
+        <router-link to="/skeleton">骨架图组件</router-link>
       </aside>
-      <main class="doc-main"></main>
+      <main class="doc-main">
+        <router-view/>
+      </main>
     </div>
   </div>
 
