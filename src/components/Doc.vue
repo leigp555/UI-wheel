@@ -58,7 +58,7 @@ export default defineComponent({
 .doc-wrap {
   width: 100%;
   height: 100vh;
-  background-color: #ccd4df;
+  background-color: #ffffff;
   position: relative;
   top: 0;
   left: 0;
