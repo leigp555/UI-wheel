@@ -109,7 +109,7 @@ export default defineComponent({
 
     > .doc-main {
       width: 100%;
-
+      padding: 30px 20px;
     }
   }
 }
