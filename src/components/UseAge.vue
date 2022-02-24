@@ -75,7 +75,13 @@ export default defineComponent({
     border: 1px solid black;
     border-top: none;
     padding: 30px;
+    >.code{
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
   }
+
   >.code-container{
     width: 100%;
     padding: 30px 30px;
