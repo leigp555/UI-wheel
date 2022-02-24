@@ -38,7 +38,7 @@ export default defineComponent({
     attribute: Object
   },
   setup(props) {
-    export type attribute = {
+      type attribute = {
       attribute: string,
       tip: string,
       type: string,
