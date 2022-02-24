@@ -1,9 +1,9 @@
 <template>
   <div class="doc-wrap">
     <div class="doc-nav">
-        <svg class="icon" aria-hidden="true">
-          <use xlink:href="#icon-list"></use>
-        </svg>
+      <svg class="icon" aria-hidden="true">
+        <use xlink:href="#icon-list"></use>
+      </svg>
       <router-link to="/home">
         <svg class="icon" aria-hidden="true">
           <use xlink:href="#icon-logo"></use>
@@ -35,23 +35,12 @@
 
 </template>
 
-<script lang="ts">
-import {defineComponent, ref} from "vue";
+<script lang="ts" setup>
+const toggle=(e)=>{
+  e.target.classList.add("selected")
+}
 
-export default defineComponent({
-  name: "Doc",
-  setup() {
-    const element = ref<HTMLDivElement>()
-    const toggle = (e: Event) => {
-      if (element.value) {
-        element.value.classList.remove("selected")
-      }
-      element.value = e.target as HTMLDivElement
-      element.value.classList.add("selected")
-    }
-    return {toggle}
-  }
-})
+
 </script>
 
 <style lang="scss" scoped>
@@ -97,12 +86,12 @@ export default defineComponent({
         line-height: 3em;
         text-decoration: none;
 
-        &.selected {
+        &.selected{
           color: #4bbc89;
         }
 
         &:hover {
-          background-color:  #7188af;
+          background-color: #7188af;
         }
       }
     }

@@ -18,7 +18,6 @@ export const router = createRouter({
         {path: "/", component: Home},
         {path: "/home", component: Home},
         {path: "/doc", component: Doc,children:[
-                {path: "/", component: Intro},
                 {path: "/intro", component: Intro},
                 {path: "/install", component: Install},
                 {path: "/switch", component: Switch},
@@ -27,6 +26,7 @@ export const router = createRouter({
                 {path: "/tab", component: Tab},
                 {path: "/carousel", component: Carousel},
                 {path: "/skeleton", component: Skeleton},
+                {path: "", component: Intro},
             ]},
         {path: '/:pathMatch(.*)*', component: NotFound},
     ]
