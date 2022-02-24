@@ -1,22 +1,21 @@
 <template>
   <transition name="fade" mode="out-in">
     <div class="carItem" v-if="selfIndex===currentIndex">
-      <img :src="src" alt="">
+     <slot/>
     </div>
   </transition>
 </template>
 
 <script lang="ts">
-import {defineComponent, toRefs} from "vue";
+import {defineComponent, inject, toRefs} from "vue";
 export default defineComponent({
   props: {
-    src: String,
-    selfIndex: Number,
-    currentIndex: Number
+    index:Number
   },
   setup(props) {
-    const {src, selfIndex, currentIndex} = toRefs(props)
-    return {src, selfIndex, currentIndex}
+    const {index:selfIndex} = toRefs(props)
+    const currentIndex=inject("currentIndex")
+    return {selfIndex, currentIndex}
   }
 })
 </script>

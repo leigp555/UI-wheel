@@ -1,24 +1,22 @@
 <template>
   <div class="gulu-carousel-wrap">
     <div class="container">
-      <div class="items" v-for="(item ,index) in data " :key="index">
-        <CarItem :src="item" :selfIndex="index" :currentIndex="currentIndex"/>
-      </div>
+      <slot/>
     </div>
-    <Dot :data-length="dataLength" v-model:currentIndex="currentIndex" :dot="dot"/>
+    <div class="dot">
+      <Dot :dataLength="length" v-model:currentIndex="currentIndex" :dot="dot"/>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import {computed, defineComponent, onBeforeUnmount, onMounted,  ref, toRefs} from "vue";
+import {defineComponent, onMounted, onUnmounted, provide, ref, toRefs} from "vue";
 import CarItem from "./carItem.vue"
 import Dot from "./dot.vue"
+
 export default defineComponent({
   components: {Dot, CarItem},
   props: {
-    data: {
-      type: Array
-    },
     autoPlay: {
       type: Boolean,
       default: true
@@ -40,35 +38,36 @@ export default defineComponent({
       default: "forward"
     }
   },
-  setup(props) {
-    const {data, initial, duration, direction, dot} = toRefs(props)
-    let currentIndex = ref<number>(initial.value)
-    const dataLength = computed(() => {
-      return data.value!.length
-    })
-    let time: number
+  setup(props, context) {
+    const {autoPlay, duration, initial, dot, direction} = toRefs(props)
+    const currentIndex = ref(initial.value)
+    const length = ref<number>(Array.from(context.slots.default())[0].children.length)
+    provide("currentIndex", currentIndex)
+    let time
     onMounted(() => {
-      //@ts-ignore
       time = setInterval(() => {
-        if (direction.value === "forward") {
-          currentIndex.value += 1
-          if (currentIndex.value > data.value!.length - 1) {
+        if (direction.value === "forward" && autoPlay.value) {
+          if (currentIndex.value < length.value - 1) {
+            currentIndex.value++
+          } else {
             currentIndex.value = 0
           }
-        } else if (direction.value === "back") {
-          currentIndex.value -= 1
-          if (currentIndex.value < 0) {
-            currentIndex.value = data.value!.length - 1
+        } else if (direction.value === "back" && autoPlay.value) {
+          if (currentIndex.value <= 0) {
+            currentIndex.value = length.value - 1
+          } else {
+            currentIndex.value--
           }
         }
       }, duration.value)
     })
-    onBeforeUnmount(() => {
+    onUnmounted(() => {
       clearInterval(time)
-      time = -1
+      time = 0
     })
-    return {data, currentIndex, dataLength, dot}
+    return {currentIndex, length, dot}
   }
+
 })
 
 </script>
@@ -86,14 +85,16 @@ export default defineComponent({
     top: 0;
     left: 0;
   }
-  >.indicator{
-    >.left{
+
+  > .indicator {
+    > .left {
       position: absolute;
       top: 50%;
       left: 0;
       transform: translateY(-50%);
     }
-    >.right{
+
+    > .right {
       position: absolute;
       top: 50%;
       right: 0;
