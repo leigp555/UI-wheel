@@ -44,6 +44,7 @@ const toggle=(e)=>{
 </script>
 
 <style lang="scss" scoped>
+
 .doc-wrap {
   width: 100%;
   height: 100vh;
@@ -79,7 +80,7 @@ const toggle=(e)=>{
       gap: 10px;
       padding: 20px 0;
       border-right: 1px solid black;
-
+      overflow-y: auto;
       > a {
         display: block;
         text-align: center;
@@ -98,7 +99,8 @@ const toggle=(e)=>{
 
     > .doc-main {
       width: 100%;
-      padding: 30px 20px;
+      padding: 30px 100px;
+      overflow-y: auto;
     }
   }
 }
