@@ -1,14 +1,14 @@
 <template>
   <Show v-model:attribute="attribute">
     <template v-slot:title>
-      <h1>Switch 开关</h1>
-      <h4>表示两种相互对立的状态间的切换，多用于触发「开/关」。</h4>
+      <h1>Skeleton 骨架屏</h1>
+      <h4>在需要等待加载内容的位置设置一个骨架屏，某些场景下比 Loading 的视觉效果更好。</h4>
     </template>
     <template v-slot:useAge>
       <UseAge>
         <template v-slot:title>
           <h2>基础用法</h2>
-          <h4>绑定 v-model 到一个 Boolean 类型的变量。 可以使用 active-color 属性与 inactive-color 属性来设置开关的背景色</h4>
+          <h4>结合Skeleton和Row组件就能自定义一张骨架图</h4>
         </template>
         <template v-slot:code></template>
         <template v-slot:example>
@@ -63,10 +63,10 @@ ajax("baidu.com").then((result) => {
 }, () => {
 })
 const attribute = ref([
-  {attribute: "loading", tip: "是否显示加载中xxxxxxxxxxxxx", type: "boolean", options: "large", default: "10"},
-  {attribute: "loading", tip: "是否显示加载中", type: "boolean", options: "large", default: "10"},
-  {attribute: "loading", tip: "是否显示加载中", type: "boolean", options: "large", default: "10"},
-  {attribute: "loading", tip: "是否显示加载中", type: "boolean", options: "large", default: "10"}
+  {attribute: "Row", tip: "Skeleton插槽内容", type: "组件", options: "", default: ""},
+  {attribute: "width", tip: "Row组件属性设置单行骨架宽度", type: "number", options: "", default: "500"},
+  {attribute: "height", tip: "Row组件属性设置单行骨架高度", type: "number", options: "--", default: "16"},
+  {attribute: "circle", tip: "Row组件属性可将骨架设置为圆形，也可以裁剪图片", type: "boolean", options: "true/false", default: "false"}
 ])
 </script>
 

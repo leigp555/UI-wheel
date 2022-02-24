@@ -88,6 +88,7 @@ export default defineComponent({
     > .code {
       display: flex;
       flex-direction: column;
+      flex-wrap: wrap;
       gap: 15px;
 
     }
