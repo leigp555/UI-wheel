@@ -1,7 +1,7 @@
 <template>
   <teleport to="body">
-    <div class="gulu-dialog-wrapper" @click="close">
-      <div class="gulu-dialog">
+    <div class="gulu-dialog-wrapper" @click="toggle">
+      <div class="gulu-dialog" @click="xx">
         <div class="title">
           <slot name="title"></slot>
         </div>
@@ -9,9 +9,10 @@
           <slot name="content"></slot>
         </div>
         <div class="event">
-          <button @click="ok">确认</button>
-          <button @click="cancel">取消</button>
+          <button @click="confirmX">确认</button>
+          <button @click="cancelX">取消</button>
         </div>
+        <button class="close" @click="close">×</button>
       </div>
     </div>
   </teleport>
@@ -22,19 +23,42 @@ import {defineComponent, toRefs} from "vue";
 export default defineComponent({
   name: "Dialog",
   props:{
-    ok:Function,
+    confirm:Function,
     cancel:Function,
+    visible:Boolean,
     overflowClose:{
       type:Boolean,
       default: false
     }
   },
-  setup(props){
-    const{ok,cancel,overflowClose}=toRefs(props)
+  setup(props,context){
+    const{confirm,cancel,overflowClose,visible}=toRefs(props)
     const close=()=>{
-      if(overflowClose.value){cancel.value!()}
+      context.emit("update:visible",!visible.value)
     }
-    return {ok,cancel,close}
+    const toggle=()=>{
+      if(overflowClose.value)close()
+    }
+    const confirmX=(e)=>{
+      e.stopPropagation()
+      const backDate=confirm.value()
+      if (backDate===false){
+      }else{
+        close()
+      }
+    }
+    const cancelX=(e)=>{
+      e.stopPropagation()
+      const backDate=cancel.value()
+      if (backDate){
+      }else{
+        close()
+      }
+    }
+    const xx= (e)=>{
+      e.stopPropagation()
+    }
+    return {confirmX,cancelX,toggle,xx,close}
   }
 })
 </script>
@@ -77,6 +101,7 @@ export default defineComponent({
       justify-content: end;
       gap: 50px;
       > button {
+        line-height: 1.5em;
         padding: 3px 15px;
         border-radius: 8px;
         border: none;
@@ -87,6 +112,17 @@ export default defineComponent({
         }
       }
 
+    }
+    >.close{
+      font-size: 1.5em;
+      border: none;
+      background-color: inherit;
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      &:hover{
+        color: #4bbc89;
+      }
     }
   }
 

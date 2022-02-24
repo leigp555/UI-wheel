@@ -18,11 +18,11 @@
         </thead>
         <tbody>
         <tr v-for="(item,index) in data" :key="index">
-          <td>{{ item.attribute }}</td>
-          <td>{{ item.tip }}</td>
-          <td>{{ item.type }}</td>
-          <td>{{ item.options }}</td>
-          <td>{{ item.default }}</td>
+          <td>{{ item.attribute?item.attribute:"--" }}</td>
+          <td>{{ item.tip?item.tip:"--" }}</td>
+          <td>{{ item.type?item.type:"--" }}</td>
+          <td>{{ item.options?item.options:"--" }}</td>
+          <td>{{ item.default?item.default:"--" }}</td>
         </tr>
         </tbody>
       </table>
