@@ -1,5 +1,5 @@
 <template>
-  <button class="gulu-switch" :class="{'gulu-switch-open':state}" @click="toggle">
+  <button class="gulu-switch"  :style="state?{backgroundColor:activeColor}:{backgroundColor:inactiveColor}" @click="toggle">
     <span class="gulu-switch-inner" :class="{'gulu-switch-on':state}"></span>
   </button>
 </template>
@@ -36,15 +36,9 @@ export default defineComponent({
 .gulu-switch {
   width: 40px;
   height: 20px;
-  background-color: #dcdfe6;
   border-radius: 20px;
   border: none;
   position: relative;
-
-  &-open {
-    background-color: #409eff;
-  }
-
   > .gulu-switch-inner {
     display: block;
     background-color: #ffffff;

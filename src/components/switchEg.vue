@@ -13,6 +13,7 @@
         <template v-slot:code></template>
         <template v-slot:example>
           <Switch v-model:state="state"></Switch>
+          <Switch v-model:state="state" inactive-color="#13ce66" active-color="#ffe846"></Switch>
         </template>
       </UseAge>
     </template>
@@ -26,10 +27,9 @@ import Show from "./Show.vue";
 import UseAge from "./UseAge.vue";
 const state = ref<boolean>(false)
 const attribute=ref([
-  {attribute:"loading",tip:"是否显示加载中xxxxxxxxxxxxx",type:"boolean",options:"large",default:"10"},
-  {attribute:"loading",tip:"是否显示加载中",type:"boolean",options:"large",default:"10"},
-  {attribute:"loading",tip:"是否显示加载中",type:"boolean",options:"large",default:"10"},
-  {attribute:"loading",tip:"是否显示加载中",type:"boolean",options:"large",default:"10"}
+  {attribute:"state",tip:"绑定值，必须是布尔值",type:"boolean",options:"true/false",default:"false"},
+  {attribute:"active-color",tip:"switch的值为 on 时的颜色",type:"string",options:"--",default:"#409eff"},
+  {attribute:"inactive-color",tip:"switch的值为 off 的颜色",type:"string",options:"--",default:"#dcdfe6"},
 ])
 </script>
 
