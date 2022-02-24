@@ -1,39 +1,46 @@
 <template>
   <Show v-model:attribute="attribute">
     <template v-slot:title>
-      <h1>Switch 开关</h1>
-      <h4>表示两种相互对立的状态间的切换，多用于触发「开/关」。</h4>
+      <h1>Button 按钮</h1>
+      <h4>常用的操作按钮。</h4>
     </template>
     <template v-slot:useAge>
-      <UseAge >
+      <UseAge>
         <template v-slot:title>
           <h2>基础用法</h2>
-          <h4>绑定 v-model 到一个 Boolean 类型的变量。 可以使用 active-color 属性与 inactive-color 属性来设置开关的背景色</h4>
+          <h4>使用 theme、cursor、level、circle 和 loading 来定义按钮的样式。</h4>
         </template>
         <template v-slot:code></template>
         <template v-slot:example>
-          <div>
-            <Button>按钮</Button>
-            <Button theme="link">按钮</Button>
-            <Button theme="text">按钮</Button>
+          <div class="button">
+            <Button>theme</Button>
+            <Button theme="link">theme</Button>
+            <Button theme="text">theme</Button>
           </div>
-          <div>
-            <Button size="normal">按钮</Button>
-            <Button size="big">按钮</Button>
-            <Button size="small">按钮</Button>
+          <div class="button">
+            <Button>cursor</Button>
+            <Button cursor="help">cursor</Button>
+            <Button cursor="wait">cursor</Button>
+            <Button cursor="crosshair">cursor</Button>
+            <Button cursor="not-allowed">cursor</Button>
           </div>
-          <div>
-            <Button>按钮</Button>
-            <Button level="main">按钮</Button>
-            <Button level="danger">按钮</Button>
+          <div class="button">
+            <Button>level</Button>
+            <Button level="main">level</Button>
+            <Button level="warning">level</Button>
+            <Button level="danger">level</Button>
           </div>
-          <div>
-            <Button>按钮</Button>
-            <Button disabled>按钮</Button>
+          <div class="button">
+            <Button>disabled</Button>
+            <Button disabled>disabled</Button>
           </div>
-          <div>
-            <Button>按钮</Button>
-            <Button loading>按钮</Button>
+          <div class="button">
+            <Button>circle</Button>
+            <Button circle>circle</Button>
+          </div>
+          <div class="button">
+            <Button>loading</Button>
+            <Button loading>loading</Button>
           </div>
         </template>
       </UseAge>
@@ -48,14 +55,21 @@ import UseAge from "./UseAge.vue";
 import {ref} from "vue";
 
 const attribute = ref([
-  {attribute: "loading", tip: "是否显示加载中xxxxxxxxxxxxx", type: "boolean", options: "large", default: "10"},
-  {attribute: "loading", tip: "是否显示加载中", type: "boolean", options: "large", default: "10"},
-  {attribute: "loading", tip: "是否显示加载中", type: "boolean", options: "large", default: "10"},
-  {attribute: "loading", tip: "是否显示加载中", type: "boolean", options: "large", default: "10"}
+  {attribute: "theme", tip: "button类型", type: "string", options: "link/text", default: "--"},
+  {attribute: "cursor", tip: "鼠标悬浮样式", type: "string", options: "help/wait/crosshair/not-allowed", default: "--"},
+  {attribute: "level", tip: "按钮等级", type: "string", options: "main/warming/danger", default: "button"},
+  {attribute: "disabled", tip: "是否可以点击", type: "boolean", options: "true/false", default: "false"},
+  {attribute: "loading", tip: "是否显示加载中", type: "boolean", options: "true/false", default: "false"}
 ])
 </script>
 
 <style lang="scss" scoped>
+.button {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
 ol {
   li {
     margin-bottom: 10px;
