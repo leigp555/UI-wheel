@@ -1,15 +1,41 @@
 <template>
-  <Tabs v-model:selected="selected">
-    <Tab title="标题一">内容一</Tab>
-    <Tab title="标题二">内容二</Tab>
-  </Tabs>
+  <Show v-model:attribute="attribute">
+    <template v-slot:title>
+      <h1>Switch 开关</h1>
+      <h4>表示两种相互对立的状态间的切换，多用于触发「开/关」。</h4>
+    </template>
+    <template v-slot:useAge>
+      <UseAge>
+        <template v-slot:title>
+          <h2>基础用法</h2>
+          <h4>绑定 v-model 到一个 Boolean 类型的变量。 可以使用 active-color 属性与 inactive-color 属性来设置开关的背景色</h4>
+        </template>
+        <template v-slot:code></template>
+        <template v-slot:example>
+          <Tabs v-model:selected="selected">
+            <Tab title="标题一">内容一</Tab>
+            <Tab title="标题二">内容二</Tab>
+          </Tabs>
+        </template>
+      </UseAge>
+    </template>
+  </Show>
 </template>
 
 <script lang="ts" setup>
 import {ref} from "vue";
 import Tabs from "../lib/Tabs.vue";
 import Tab from "../lib/Tab.vue";
+import Show from "./Show.vue";
+import UseAge from "./UseAge.vue";
+
 const selected = ref("标题一")
+const attribute=ref([
+  {attribute:"loading",tip:"是否显示加载中xxxxxxxxxxxxx",type:"boolean",options:"large",default:"10"},
+  {attribute:"loading",tip:"是否显示加载中",type:"boolean",options:"large",default:"10"},
+  {attribute:"loading",tip:"是否显示加载中",type:"boolean",options:"large",default:"10"},
+  {attribute:"loading",tip:"是否显示加载中",type:"boolean",options:"large",default:"10"}
+])
 </script>
 
 <style lang="scss" scoped>

@@ -69,7 +69,7 @@ export default defineComponent({
       }
     }
     >.gulu-content{
-      color: red;
+      color: inherit;
       margin-top: 20px;
     }
     >.indicator{
