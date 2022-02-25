@@ -17,6 +17,7 @@
       </div>
     </div>
     <div class="code-container" v-if="state.visible">
+      <h4>代码示例:</h4>
       <slot name="code"></slot>
     </div>
   </div>
@@ -109,7 +110,11 @@ export default defineComponent({
   > .code-container {
     width: 100%;
     padding: 30px 30px;
+    margin-top: 10px;
     border: 1px solid black;
+    >h4{
+      margin-bottom: 5px;
+    }
   }
 }
 </style>

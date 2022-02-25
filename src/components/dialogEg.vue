@@ -11,7 +11,9 @@
           <h4>Dialog 弹出一个对话框，适合需要定制性更大的场景。</h4>
           <h4>需要绑定两个回调函数，以及插槽内容，可选属性overflowClose</h4>
         </template>
-        <template v-slot:code></template>
+        <template v-slot:code>
+          <pre v-html="html"></pre>
+        </template>
         <template v-slot:example>
           <Button @click="toggle" size="normal" style="width:100px">toggle</Button>
           <Dialog v-if="visible" v-model:confirm="confirm" v-model:cancel="cancel" v-model:visible="visible" overflowClose>
@@ -35,6 +37,8 @@ import Dialog from "../lib/Dialog.vue";
 import Show from "./Show.vue";
 import UseAge from "./UseAge.vue";
 import {ref} from "vue";
+import {codeToHtml} from "./codeHtml";
+import {dialogCode} from "../eg/eg";
 
 
 const visible = ref<boolean>(false)
@@ -55,6 +59,8 @@ const attribute = ref([
   {attribute: "visible", tip: "组件是否显示", type: "boolean", options: "必填", default: "--"},
   {attribute: "overflowClose", tip: "点击遮罩层是否关闭组件", type: "可选", options: "true/false", default: "false"},
 ])
+const html=codeToHtml(dialogCode())
+
 </script>
 
 <style lang="scss" scoped>

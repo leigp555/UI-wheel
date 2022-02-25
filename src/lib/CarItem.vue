@@ -21,9 +21,6 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-img{
-  width: 100%;
-}
 .carItem {
   position: absolute;
   top: 0;

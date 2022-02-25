@@ -3,7 +3,6 @@
     <transition name="fade">
       <Indicator position="left" class="left" @click="toggleLeft" v-if="visible"/>
     </transition>
-
     <div class="container">
       <slot/>
     </div>

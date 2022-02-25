@@ -10,7 +10,9 @@
           <h2>基础用法</h2>
           <h4>绑定 v-model 到一个 Boolean 类型的变量。 可以使用 active-color 属性与 inactive-color 属性来设置开关的背景色</h4>
         </template>
-        <template v-slot:code></template>
+        <template v-slot:code>
+          <pre v-html="html"></pre>
+        </template>
         <template v-slot:example>
           <div class="carousel">
             <Carousel
@@ -39,6 +41,8 @@ import {ref} from "vue";
 import Show from "./Show.vue";
 import UseAge from "./UseAge.vue";
 import CarItem from "../lib/CarItem.vue";
+import {codeToHtml} from "./codeHtml";
+import {carouselCode} from "../eg/eg";
 const imageSrc=["../../public/images/a.jpg","../../public/images/b.jpg","../../public/images/c.jpg","../../public/images/d.jpg"]
 const attribute = ref([
   {attribute: "autoPlay", tip: "是否自动播放", type: "boolean", options: "true/false", default: "true"},
@@ -48,7 +52,7 @@ const attribute = ref([
   {attribute: "direction", tip: "方向", type: "string", options: "forward/back", default: "forward"},
   {attribute: "indicator", tip: "左右方向键", type: "boolean", options: "ture/false", default: "true"},
 ])
-
+const html=codeToHtml(carouselCode())
 </script>
 
 <style lang="scss" scoped>

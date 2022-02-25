@@ -27,17 +27,17 @@ import {ref} from "vue";
 import Switch from "../lib/Switch.vue";
 import Show from "./Show.vue";
 import UseAge from "./UseAge.vue";
-import 'prismjs';
-import 'prismjs/themes/prism.css'
-const Prism = (window as any).Prism
+import {codeToHtml} from "./codeHtml";
+import {switchCode} from "../eg/eg"
+
 const state = ref<boolean>(false)
 const attribute = ref([
   {attribute: "state", tip: "绑定值，必须是布尔值", type: "boolean", options: "true/false", default: "false"},
   {attribute: "active-color", tip: "switch的值为 on 时的颜色", type: "string", options: "--", default: "#409eff"},
   {attribute: "inactive-color", tip: "switch的值为 off 的颜色", type: "string", options: "--", default: "#dcdfe6"},
 ])
-const string = `<Switch v-model:state="state"></Switch><Switch v-model:state="state" inactive-color="#13ce66" active-color="#ffe846"></Switch>`
-const html = Prism.highlight(string, Prism.languages.html, 'html')
+
+const html=codeToHtml(switchCode())
 
 </script>
 

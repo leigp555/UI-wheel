@@ -10,7 +10,9 @@
           <h2>基础用法</h2>
           <h4>结合Skeleton和Row组件就能自定义一张骨架图</h4>
         </template>
-        <template v-slot:code></template>
+        <template v-slot:code>
+          <pre v-html="html"></pre>
+        </template>
         <template v-slot:example>
           <Skeleton v-if="loaded">
             <Row :circle="true" :width="40" :height="40">
@@ -47,6 +49,8 @@ import Skeleton from "../lib/Skeleton.vue";
 import Show from "./Show.vue";
 import UseAge from "./UseAge.vue";
 import {ref} from "vue";
+import {codeToHtml} from "./codeHtml";
+import {skeletonCode} from "../eg/eg";
 
 const loaded = ref<boolean>(false)
 const ajax = (url: string) => {
@@ -68,6 +72,7 @@ const attribute = ref([
   {attribute: "height", tip: "Row组件属性设置单行骨架高度", type: "number", options: "--", default: "16"},
   {attribute: "circle", tip: "Row组件属性可将骨架设置为圆形，也可以裁剪图片", type: "boolean", options: "true/false", default: "false"}
 ])
+const html=codeToHtml(skeletonCode())
 </script>
 
 <style lang="scss" scoped>

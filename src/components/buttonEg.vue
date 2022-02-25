@@ -10,7 +10,9 @@
           <h2>基础用法</h2>
           <h4>使用 theme、cursor、level、circle 和 loading 来定义按钮的样式。</h4>
         </template>
-        <template v-slot:code></template>
+        <template v-slot:code>
+          <pre v-html="html"></pre>
+        </template>
         <template v-slot:example>
           <div class="button">
             <Button>theme</Button>
@@ -53,6 +55,8 @@ import Button from "../lib/Button.vue";
 import Show from "./Show.vue";
 import UseAge from "./UseAge.vue";
 import {ref} from "vue";
+import {codeToHtml} from "./codeHtml";
+import {buttonCode} from "../eg/eg";
 
 const attribute = ref([
   {attribute: "theme", tip: "button类型", type: "string", options: "link/text", default: "--"},
@@ -61,6 +65,10 @@ const attribute = ref([
   {attribute: "disabled", tip: "是否可以点击", type: "boolean", options: "true/false", default: "false"},
   {attribute: "loading", tip: "是否显示加载中", type: "boolean", options: "true/false", default: "false"}
 ])
+
+const html=codeToHtml(buttonCode())
+
+
 </script>
 
 <style lang="scss" scoped>
