@@ -14,7 +14,7 @@ export default defineComponent({
     position: String
   },
   setup(props){
-    const position=ref<string>(props.position)
+    const position=ref<string>(props.position!)
     return {position}
   }
 })

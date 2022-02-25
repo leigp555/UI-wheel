@@ -45,7 +45,7 @@ export default defineComponent({
       options: string,
       default: string,
     }
-    const data=ref<attribute[]>(props.attribute)
+    const data=ref<attribute[]>(props.attribute as attribute[])
     return {data}
   }
 })

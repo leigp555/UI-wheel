@@ -53,12 +53,14 @@ export default defineComponent({
   setup(props, context) {
     const {autoPlay, duration, initial, dot, direction, indicator} = toRefs(props)
     const currentIndex = ref(initial.value)
-    const length = ref<number>(Array.from(context.slots.default())[0].children.length)
+    const arr=Array.from(context.slots.default!())[0].children!.length as number
+    const length = ref<number>(arr)
     const element = ref<HTMLDivElement>()
     const visible = ref<boolean>(false)
     provide("currentIndex", currentIndex)
-    let time
+    let time:number
     onMounted(() => {
+      //@ts-ignore
       time = setInterval(() => {
         if (direction.value === "forward" && autoPlay.value) {
           if (currentIndex.value < length.value - 1) {

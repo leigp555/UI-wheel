@@ -36,8 +36,9 @@
 </template>
 
 <script lang="ts" setup>
-const toggle=(e)=>{
-  e.target.classList.add("selected")
+const toggle = (e: Event) => {
+  const div = e.target as HTMLDivElement
+  div.classList.add("selected")
 }
 
 
@@ -81,13 +82,14 @@ const toggle=(e)=>{
       padding: 20px 0;
       border-right: 1px solid black;
       overflow-y: auto;
+
       > a {
         display: block;
         text-align: center;
         line-height: 3em;
         text-decoration: none;
 
-        &.selected{
+        &.selected {
           color: #4bbc89;
         }
 

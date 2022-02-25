@@ -39,23 +39,23 @@ export default defineComponent({
     const toggle=()=>{
       if(overflowClose.value)close()
     }
-    const confirmX=(e)=>{
+    const confirmX=(e:Event)=>{
       e.stopPropagation()
-      const backDate=confirm.value()
+      const backDate=confirm.value!()
       if (backDate===false){
       }else{
         close()
       }
     }
-    const cancelX=(e)=>{
+    const cancelX=(e:Event)=>{
       e.stopPropagation()
-      const backDate=cancel.value()
+      const backDate=cancel.value!()
       if (backDate){
       }else{
         close()
       }
     }
-    const xx= (e)=>{
+    const xx= (e:Event)=>{
       e.stopPropagation()
     }
     return {confirmX,cancelX,toggle,xx,close}
