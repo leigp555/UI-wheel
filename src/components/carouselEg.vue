@@ -19,6 +19,7 @@
                 :initial="0"
                 :dot="true"
                 direction="forward"
+                :indicator="true"
             >
               <CarItem v-for="(item,index) in imageSrc" :key="index" :index="index">
                 <img :src="item" alt="">
@@ -44,7 +45,8 @@ const attribute = ref([
   {attribute: "duration", tip: "切换间隔事件单位毫秒", type: "time", options: "", default: "2000"},
   {attribute: "initial", tip: "初始图片索引", type: "number", options: "", default: "0"},
   {attribute: "dot", tip: "底部圆点索引", type: "boolean", options: "ture/false", default: "true"},
-  {attribute: "direction", tip: "方向", type: "string", options: "forward/back", default: "forward"}
+  {attribute: "direction", tip: "方向", type: "string", options: "forward/back", default: "forward"},
+  {attribute: "indicator", tip: "左右方向键", type: "boolean", options: "ture/false", default: "true"},
 ])
 
 </script>

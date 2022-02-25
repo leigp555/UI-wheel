@@ -1,8 +1,15 @@
 <template>
-  <div class="gulu-carousel-wrap">
+  <div class="gulu-carousel-wrap" ref="element">
+    <transition name="fade">
+      <Indicator position="left" class="left" @click="toggleLeft" v-if="visible"/>
+    </transition>
+
     <div class="container">
       <slot/>
     </div>
+    <transition name="fade">
+      <Indicator position="right" class="right" @click="toggleRight" v-if="visible"/>
+    </transition>
     <div class="dot">
       <Dot :dataLength="length" v-model:currentIndex="currentIndex" :dot="dot"/>
     </div>
@@ -13,9 +20,10 @@
 import {defineComponent, onMounted, onUnmounted, provide, ref, toRefs} from "vue";
 import CarItem from "./carItem.vue"
 import Dot from "./dot.vue"
+import Indicator from "./Indicator.vue";
 
 export default defineComponent({
-  components: {Dot, CarItem},
+  components: {Dot, CarItem, Indicator},
   props: {
     autoPlay: {
       type: Boolean,
@@ -36,12 +44,18 @@ export default defineComponent({
     direction: {
       type: String,
       default: "forward"
+    },
+    indicator: {
+      type: Boolean,
+      default: true
     }
   },
   setup(props, context) {
-    const {autoPlay, duration, initial, dot, direction} = toRefs(props)
+    const {autoPlay, duration, initial, dot, direction, indicator} = toRefs(props)
     const currentIndex = ref(initial.value)
     const length = ref<number>(Array.from(context.slots.default())[0].children.length)
+    const element = ref<HTMLDivElement>()
+    const visible = ref<boolean>(false)
     provide("currentIndex", currentIndex)
     let time
     onMounted(() => {
@@ -65,7 +79,31 @@ export default defineComponent({
       clearInterval(time)
       time = 0
     })
-    return {currentIndex, length, dot}
+    const toggleLeft = () => {
+      if (currentIndex.value === 0) {
+        currentIndex.value = length.value - 1
+      }
+      currentIndex.value -= 1
+    }
+    const toggleRight = () => {
+      if (currentIndex.value === length.value - 1) {
+        currentIndex.value = 0
+      } else {
+        currentIndex.value += 1
+      }
+    }
+    onMounted(() => {
+      if (indicator.value) {
+        element.value?.addEventListener("mouseover", () => {
+          visible.value = true
+        })
+        element.value?.addEventListener("mouseout", () => {
+          visible.value = false
+        })
+      }
+    })
+
+    return {currentIndex, length, dot, toggleLeft, toggleRight, indicator, element, visible}
   }
 
 })
@@ -86,21 +124,29 @@ export default defineComponent({
     left: 0;
   }
 
-  > .indicator {
-    > .left {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      transform: translateY(-50%);
-    }
+  > .left {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    z-index: 1;
+  }
 
-    > .right {
-      position: absolute;
-      top: 50%;
-      right: 0;
-      transform: translateY(-50%);
-    }
+  > .right {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    z-index: 1;
   }
 }
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
 
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
 </style>

@@ -37,10 +37,9 @@ export default defineComponent({
   display: flex;
   gap: 10px;
   >.gulu-dot-item{
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
-    background-color: red;
   }
 
 }
