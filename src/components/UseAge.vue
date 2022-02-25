@@ -6,8 +6,8 @@
     <div class="action">
       <button class="copy">复制代码</button>
       <div class="code-show">
-        <button class="code-visible">显示代码</button>
-        <button class="code-visible">隐藏代码</button>
+        <button class="code-visible" @click="showCode" v-if="!state.visible">显示代码</button>
+        <button class="code-visible" @click="hidden" v-if="state.visible">隐藏代码</button>
       </div>
 
     </div>
@@ -36,8 +36,14 @@ export default defineComponent({
     const state = reactive({
       visible: false,
     })
-   const {center}=toRefs(props)
-    return {state,center}
+    const {center} = toRefs(props)
+    const showCode = () => {
+      state.visible = true
+    }
+    const hidden = () => {
+      state.visible = false
+    }
+    return {state, center, showCode, hidden}
   }
 })
 </script>
@@ -92,7 +98,8 @@ export default defineComponent({
       gap: 15px;
 
     }
-    >.center{
+
+    > .center {
       justify-content: center;
       align-items: center;
     }
