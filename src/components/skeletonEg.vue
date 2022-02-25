@@ -16,7 +16,7 @@
         <template v-slot:example>
           <Skeleton v-if="loaded">
             <Row :circle="true" :width="40" :height="40">
-              <img src="../../public/images/a.jpg" alt="">
+              <img src="../../public/images/e.jpg" alt="">
             </Row>
             <div class="article">
               <p> 水调歌头·明月几时有</p>
@@ -50,6 +50,7 @@ import Show from "./Show.vue";
 import UseAge from "./UseAge.vue";
 import {ref} from "vue";
 import {codeToHtml} from "./codeHtml";
+
 import {skeletonCode} from "../eg/eg";
 
 const loaded = ref<boolean>(false)
