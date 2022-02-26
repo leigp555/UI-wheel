@@ -18,7 +18,7 @@
       </div>
     </div>
     <div class="code-container" v-if="state.visible" @touchstart.stop="" @touchmove.stop="">
-      <h4>代码示例:</h4>
+      <h5>示例代码:</h5>
       <slot name="code"></slot>
     </div>
   </div>
@@ -121,7 +121,7 @@ export default defineComponent({
 
   > .code-container {
     width: 100%;
-    padding: 30px 30px;
+    padding: 10px 30px;
     margin-top: 10px;
     border: 1px solid black;
     overflow-x: scroll;

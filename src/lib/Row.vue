@@ -18,7 +18,7 @@ export default defineComponent({
   props: {
     width: {
       type: String,
-      default: "80vw",
+      default: "100%",
     },
     height: {
       type: String,
