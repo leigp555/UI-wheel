@@ -36,29 +36,29 @@
         </div>
       </main>
       <footer class="footer">
-          <ol>
-            <li>
-              <svg class="icon" aria-hidden="true">
-                <use xlink:href="#icon-Vue"></use>
-              </svg>
-              <p>vue3</p>
-              <p>基于vue3开发</p>
-            </li>
-            <li>
-              <svg class="icon" aria-hidden="true">
-                <use xlink:href="#icon-ts"></use>
-              </svg>
-              <p>typescript</p>
-              <p>使用typescript书写</p>
-            </li>
-            <li>
-              <svg class="icon" aria-hidden="true">
-                <use xlink:href="#icon-easy"></use>
-              </svg>
-              <p>easy</p>
-              <p>简单明了易上手</p>
-            </li>
-          </ol>
+        <ol>
+          <li>
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-Vue"></use>
+            </svg>
+            <p>vue3</p>
+            <p>基于vue3开发</p>
+          </li>
+          <li>
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-ts"></use>
+            </svg>
+            <p>typescript</p>
+            <p>使用typescript书写</p>
+          </li>
+          <li>
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-easy"></use>
+            </svg>
+            <p>easy</p>
+            <p>简单明了易上手</p>
+          </li>
+        </ol>
       </footer>
     </div>
   </div>
@@ -75,15 +75,28 @@ export default defineComponent({
 <style lang="scss" scoped>
 .outer {
   width: 100vw;
-  height: 100vh;
+  min-height: calc(100vh - 2px);
   background-color: #ccd4df;
+  border: 1px solid transparent;
 }
 
 .home-wrap {
   max-width: 1200px;
   margin-right: auto;
   margin-left: auto;
+  margin-top: 50px;
   height: 100%;
+  @media (width=1200px) {
+    max-width: 900px;
+  }
+  @media (width=900px) {
+    max-width: 800px;
+    min-width: 800px;
+  }
+  @media (width<500px) {
+    margin-top: 0;
+  }
+
   > .home-nav {
     width: 100%;
     height: 50px;
@@ -91,8 +104,20 @@ export default defineComponent({
     justify-content: space-between;
     align-items: center;
     padding: 50px 50px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
     background: linear-gradient(90deg, rgba(110, 133, 173, 1) 0%, rgba(147, 165, 195, 1) 54%, rgba(153, 169, 200, 1) 100%);
-
+    @media (width<500px) {
+      border-radius: 0;
+      padding: 40px 30px;
+    }
+    & .icon {
+      width: 1.5em;
+      height: 1.5em;
+      vertical-align: -0.15em;
+      fill: currentColor;
+      overflow: hidden;
+    }
     > ol {
       display: flex;
       gap: 20px;
@@ -101,35 +126,53 @@ export default defineComponent({
 
   > .home-main {
     width: 100%;
-    height: 50vh;
+    height: 300px;
     background: linear-gradient(90deg, rgba(110, 133, 173, 1) 0%, rgba(147, 165, 195, 1) 54%, rgba(153, 169, 200, 1) 100%);
-
+    @media (width<500px) {
+      height: 200px;
+    }
     > .container {
       width: 100%;
       height: 100%;
       position: relative;
       top: 0;
       left: 0;
-
       > ol {
         position: absolute;
         top: 60px;
         left: 50%;
         transform: translateX(-150%);
-
+        @media (width<500px) {
+          top: 10px;
+          transform: translateX(-50%);
+          text-align: center;
+        }
+        & li{
+          margin-bottom: 30px;
+          @media (width<500px) {
+            margin-bottom: 15px;
+          }
+        }
         & li:first-child {
           color: #f8fcfd;
           font-size: 2em;
-          margin-bottom: 30px;
+
         }
 
         & li:nth-child(2) {
           color: #cedbe9;
-          margin-bottom: 30px;
+
+          white-space: nowrap;
         }
 
         & li:nth-child(3) {
           color: #cedbe9;
+          @media (width<500px) {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+          }
 
           > button {
             padding: 6px 12px;
@@ -141,19 +184,34 @@ export default defineComponent({
             border: none;
             background-color: #13192e;
             color: #d6d9e0;
+            @media (width<500px) {
+             margin-right: 0;
+            }
           }
         }
       }
 
       > .png {
-        width: 400px;
+        max-width: 330px;
         position: absolute;
         top: 35%;
-        right: 10vw;
+        right: 250px;
         transform: translateY(-50%);
-
+        @media (width=1200px) {
+          max-width: 280px;
+          right: 180px;
+          top: 40%;
+        }
+        @media (width=900px) {
+          max-width: 260px;
+          right: 160px;
+          top: 42%;
+        }
         > img {
           max-width: 100%;
+          @media (width<500px) {
+            display: none;
+          }
         }
       }
     }
@@ -161,41 +219,63 @@ export default defineComponent({
 
   > .footer {
     margin-top: 50px;
-    >ol{
+    @media (width<500px) {
+      margin: 30px 30px 0 30px;
+    }
+    > ol {
       display: flex;
       justify-content: center;
       gap: 20px;
-      >li{
+      @media (width<500px) {
+       display: flex;
+        flex-direction: column;
+      }
+      > li {
         background-color: #f0f3fd;
         width: 400px;
         display: inline-grid;
-        grid-template-columns: 4em 1fr ;
+        grid-template-columns: 4em 1fr;
         grid-template-rows: 1fr 1fr 1fr 1fr;
         grid-gap: 30px;
-        justify-content: center;
-        align-items: center;
         padding: 0 25px;
-        >.icon{
-          width: 4em;
-          height: 4em;
+        @media (width<500px) {
+          width: 100%;
+          grid-template-columns: 80px;
+          grid-template-rows: 1fr 1fr 1fr 1fr;
+          justify-content: center;
+          align-items: center;
+          padding: 0 20px;
+          gap: 5px;
+          border-radius: 10px;
+        }
+
+        > .icon {
           grid-column-start: 1;
           grid-column-end: 2;
           grid-row-start: 1;
           grid-row-end: 5;
+          width:4em;
+          height: 4em;
+          vertical-align: -0.15em;
+          fill: currentColor;
+          overflow: hidden;
         }
-        >p:nth-child(2){
+
+        > p:nth-child(2) {
           grid-column-start: 2;
-          grid-column-end:3;
+          grid-column-end: 3;
           grid-row-start: 2;
           grid-row-end: 3;
         }
-        >p:nth-child(3){
+
+        > p:nth-child(3) {
           grid-column-start: 2;
-          grid-column-end:3;
+          grid-column-end: 3;
           grid-row-start: 3;
           grid-row-end: 4;
         }
-        >p{
+
+        > p {
           white-space: nowrap;
         }
       }
@@ -204,11 +284,5 @@ export default defineComponent({
   }
 }
 
-.icon {
-  width: 1.5em;
-  height: 1.5em;
-  vertical-align: -0.15em;
-  fill: currentColor;
-  overflow: hidden;
-}
+
 </style>
