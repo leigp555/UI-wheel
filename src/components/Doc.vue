@@ -94,7 +94,7 @@ const asideVisible=()=>{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 40px;
+    padding: 0 10px;
     background: linear-gradient(90deg, rgba(110, 133, 173, 1) 0%, rgba(147, 165, 195, 1) 54%, rgba(153, 169, 200, 1) 100%);
     @media (min-width: 500px) {
       > svg:nth-child(1) {
