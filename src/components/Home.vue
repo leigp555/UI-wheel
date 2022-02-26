@@ -132,7 +132,7 @@ export default defineComponent({
           color: #cedbe9;
 
           > button {
-            padding: 5px 10px;
+            padding: 6px 12px;
             line-height: 1.5em;
             text-align: center;
             white-space: nowrap;
@@ -147,7 +147,6 @@ export default defineComponent({
 
       > .png {
         width: 400px;
-
         position: absolute;
         top: 35%;
         right: 10vw;

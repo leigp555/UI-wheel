@@ -4,13 +4,13 @@
          @click="toggle(index)"
          v-for="(item,index) in dataLength"
          :key="index"
-         :style="{backgroundColor:index===currentIndex?'#e07948':'#ffffff' }">
+         :style="{backgroundColor:index===currentIndex?'#e07948':'#fff' }">
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, toRefs} from "vue";
+import {defineComponent, inject, toRefs} from "vue";
 export default defineComponent({
   name: "Dot",
   props: {
@@ -35,10 +35,11 @@ export default defineComponent({
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 10px;
+  gap: 8px;
+
   >.gulu-dot-item{
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
   }
 
