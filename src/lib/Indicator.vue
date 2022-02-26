@@ -22,14 +22,14 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .gulu-indicator-wrap{
-  background-color:rgba(226, 230, 234,.6);
+  background-color:rgba(0, 0, 0,.4);
   display: inline-block;
   padding: 12px;
   border-radius: 50%;
 }
 .gulu-indicator {
-  width: 10px;
-  height:10px;
+  width: 8px;
+  height:8px;
   border-top: 1px solid #fff;
   border-left: 1px solid #fff;
   &.left{

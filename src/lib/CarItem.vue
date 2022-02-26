@@ -10,7 +10,7 @@
           <Indicator position="right" class="right" @click="toggleRight" v-if="visible"/>
         </transition>
         <div class="dot">
-          <Dot :dataLength="length" :currentIndex="currentIndex" :dot="dot"/>
+          <Dot :dataLength="length" :currentIndex="currentIndex" :dot="dot" :changeCurrentIndex="changeCurrentIndex"/>
         </div>
       </div>
     </transition>
@@ -35,6 +35,9 @@ export default defineComponent({
     const length=inject("length")
     const dot=inject("dot")
     const indicator=inject("indicator")
+    const changeCurrentIndex=inject("changeCurrentIndex")
+
+
     const element = ref<HTMLDivElement>()
     const toggleLeft = () => {
       if (currentIndex.value === 0) {
@@ -59,7 +62,7 @@ export default defineComponent({
         })
       }
     })
-    return {selfIndex, currentIndex,visible,toggleRight,toggleLeft,element,dot,length}
+    return {selfIndex, currentIndex,visible,toggleRight,toggleLeft,element,dot,length,changeCurrentIndex}
   }
 })
 </script>
@@ -75,14 +78,14 @@ export default defineComponent({
     > .left {
       position: absolute;
       top: 50%;
-      left: 10px;
+      left: 0;
       transform: translateY(-50%);
       z-index: 1;
     }
     > .right {
       position: absolute;
       top: 50%;
-      right: 10px;
+      right: 0;
       transform: translateY(-50%);
       z-index: 1;
     }

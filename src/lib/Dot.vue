@@ -11,19 +11,21 @@
 
 <script lang="ts">
 import {defineComponent, inject, toRefs} from "vue";
+
 export default defineComponent({
   name: "Dot",
   props: {
     dataLength: Number,
-    currentIndex:Number,
-    dot:{type:Boolean,default:true}
+    currentIndex: Number,
+    dot: {type: Boolean, default: true},
+    changeCurrentIndex: Function
   },
-  setup(props,context) {
-    const {dataLength,currentIndex,dot} = toRefs(props)
-    const toggle=(index:number)=>{
-      context.emit("update:currentIndex",index)
+  setup(props, context) {
+    const {dataLength, currentIndex, dot, changeCurrentIndex} = toRefs(props)
+    const toggle = (index: number) => {
+      changeCurrentIndex.value(index)
     }
-    return {dataLength, currentIndex,toggle,dot}
+    return {dataLength, currentIndex, toggle, dot}
   }
 })
 </script>
@@ -37,7 +39,7 @@ export default defineComponent({
   display: flex;
   gap: 8px;
 
-  >.gulu-dot-item{
+  > .gulu-dot-item {
     width: 8px;
     height: 8px;
     border-radius: 50%;

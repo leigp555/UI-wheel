@@ -44,11 +44,14 @@ export default defineComponent({
     const currentIndex = ref(initial.value)
     const arr = Array.from(context.slots.default!())[0].children!.length as number
     const length = ref<number>(arr)
-
+    const changeCurrentIndex=(index)=>{
+      currentIndex.value=index
+    }
     provide("currentIndex", currentIndex)
     provide("length", length)
     provide("dot", dot)
     provide("indicator", indicator)
+    provide("changeCurrentIndex",changeCurrentIndex)
     let time: number
     onMounted(() => {
       //@ts-ignore
