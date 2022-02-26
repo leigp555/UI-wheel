@@ -1,7 +1,7 @@
 <template>
   <div class="doc-wrap">
     <div class="doc-nav">
-      <svg class="icon" aria-hidden="true">
+      <svg class="icon"  @click="asideVisible">
         <use xlink:href="#icon-list"></use>
       </svg>
       <router-link to="/home">
@@ -14,19 +14,20 @@
           <use xlink:href="#icon-github-fill"></use>
         </svg>
       </a>
-
     </div>
     <div class="content">
-      <aside class="doc-aside" @click="toggle" v-if="visible">
-        <router-link to="/intro">介绍</router-link>
-        <router-link to="/install">安装</router-link>
-        <router-link to="/switch">switch组件</router-link>
-        <router-link to="/button">button组件</router-link>
-        <router-link to="/dialog">dialog组件</router-link>
-        <router-link to="/tab">tab组件</router-link>
-        <router-link to="/carousel">轮播组件</router-link>
-        <router-link to="/skeleton">骨架图组件</router-link>
-      </aside>
+      <transition name="fade">
+        <aside class="doc-aside" @click="toggle" v-if="visible">
+          <router-link to="/intro">介绍</router-link>
+          <router-link to="/install">安装</router-link>
+          <router-link to="/switch">switch组件</router-link>
+          <router-link to="/button">button组件</router-link>
+          <router-link to="/dialog">dialog组件</router-link>
+          <router-link to="/tab">tab组件</router-link>
+          <router-link to="/carousel">轮播组件</router-link>
+          <router-link to="/skeleton">骨架图组件</router-link>
+        </aside>
+      </transition>
       <main class="doc-main" @click="hidden">
         <router-view/>
       </main>
@@ -72,7 +73,9 @@ const hidden = () => {
     visible.value = false
   }
 }
-
+const asideVisible=()=>{
+  visible.value=!visible.value
+}
 </script>
 
 <style lang="scss" scoped>
@@ -91,12 +94,13 @@ const hidden = () => {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 70px;
+    padding: 0 40px;
     background: linear-gradient(90deg, rgba(110, 133, 173, 1) 0%, rgba(147, 165, 195, 1) 54%, rgba(153, 169, 200, 1) 100%);
     @media (min-width: 500px) {
       > svg:nth-child(1) {
         display: none;
       }
+      padding: 0 70px;
     }
   }
 
@@ -113,6 +117,13 @@ const hidden = () => {
       padding: 20px 0;
       border-right: 1px solid black;
       overflow-y: auto;
+      @media (max-width: 500px) {
+         position: absolute;
+        top: 50px;
+        left: 0;
+        z-index: 1;
+        background-color: white;
+      }
 
       > a {
         display: block;
@@ -134,6 +145,9 @@ const hidden = () => {
       width: 100%;
       padding: 30px 100px;
       overflow-y: auto;
+      @media (max-width: 500px) {
+        padding: 30px 10px;
+      }
     }
   }
 }
@@ -144,5 +158,11 @@ const hidden = () => {
   vertical-align: -0.15em;
   fill: currentColor;
   overflow: hidden;
+}
+.fade-enter-active,.fade-leave-active{
+  transition: all 250ms;
+}
+.fade-enter-from,.fade-leave-to{
+  transform: translateX(-200px);
 }
 </style>
