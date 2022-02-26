@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, inject, toRefs} from "vue";
+import {defineComponent, toRefs} from "vue";
 
 export default defineComponent({
   name: "Dot",
@@ -20,10 +20,10 @@ export default defineComponent({
     dot: {type: Boolean, default: true},
     changeCurrentIndex: Function
   },
-  setup(props, context) {
+  setup(props) {
     const {dataLength, currentIndex, dot, changeCurrentIndex} = toRefs(props)
     const toggle = (index: number) => {
-      changeCurrentIndex.value(index)
+      changeCurrentIndex.value!(index)
     }
     return {dataLength, currentIndex, toggle, dot}
   }

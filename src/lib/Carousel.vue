@@ -44,7 +44,7 @@ export default defineComponent({
     const currentIndex = ref(initial.value)
     const arr = Array.from(context.slots.default!())[0].children!.length as number
     const length = ref<number>(arr)
-    const changeCurrentIndex=(index)=>{
+    const changeCurrentIndex=(index:number)=>{
       currentIndex.value=index
     }
     provide("currentIndex", currentIndex)

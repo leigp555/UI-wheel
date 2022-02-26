@@ -49,7 +49,7 @@ export default defineComponent({
       state.visible = false
     }
     const copy=()=>{
-      navigator.clipboard.writeText(codeText.value).then(()=>{
+      navigator.clipboard.writeText(codeText.value!).then(()=>{
         codeVisible.value=!codeVisible.value
         setTimeout(()=>{
           codeVisible.value=!codeVisible.value

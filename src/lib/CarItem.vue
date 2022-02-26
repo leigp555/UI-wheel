@@ -19,7 +19,7 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, inject, onMounted, ref, toRefs} from "vue";
+import {defineComponent, inject, onMounted, Ref, ref, toRefs} from "vue";
 import Dot from "./dot.vue"
 import Indicator from "./Indicator.vue";
 export default defineComponent({
@@ -31,11 +31,11 @@ export default defineComponent({
   setup(props) {
     const visible = ref<boolean>(false)
     const {index:selfIndex} = toRefs(props)
-    const currentIndex=inject("currentIndex")
-    const length=inject("length")
-    const dot=inject("dot")
-    const indicator=inject("indicator")
-    const changeCurrentIndex=inject("changeCurrentIndex")
+    const currentIndex=inject("currentIndex")  as Ref
+    const length=inject("length") as Ref
+    const dot=inject("dot") as Ref
+    const indicator=inject("indicator") as Ref
+    const changeCurrentIndex=inject("changeCurrentIndex") as Ref
 
 
     const element = ref<HTMLDivElement>()
