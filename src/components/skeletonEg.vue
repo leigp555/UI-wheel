@@ -15,7 +15,7 @@
         </template>
         <template v-slot:example>
           <Skeleton v-if="loaded">
-            <Row :circle="true" :width="40" :height="40">
+            <Row :circle="true" width="40px" height="40px">
               <img src="../../public/images/e.jpg" alt="">
             </Row>
             <div class="article">
@@ -27,13 +27,15 @@
             </div>
           </Skeleton>
           <Skeleton v-else>
-            <Row :circle="true" :width="40" :height="40">
+            <Row :circle="true" width="40px" height="40px">
               <img src="" alt="">
             </Row>
-            <Row :width="200" :height="16"/>
-            <Row :width="400"/>
+            <Row width="40vw" />
+            <Row width="80vw"/>
+            <Row width="80vw"/>
+            <Row width="80vw"/>
             <Row/>
-            <Row :width="400"/>
+            <Row width="50vw"/>
             <Row/>
           </Skeleton>
         </template>
@@ -69,8 +71,8 @@ ajax("baidu.com").then((result) => {
 })
 const attribute = ref([
   {attribute: "Row", tip: "Skeleton插槽内容", type: "组件", options: "", default: ""},
-  {attribute: "width", tip: "Row组件属性设置单行骨架宽度", type: "number", options: "", default: "500"},
-  {attribute: "height", tip: "Row组件属性设置单行骨架高度", type: "number", options: "--", default: "16"},
+  {attribute: "width", tip: "Row组件属性设置单行骨架宽度", type: "string", options: "", default: "80vw"},
+  {attribute: "height", tip: "Row组件属性设置单行骨架高度", type: "string", options: "--", default: "16px"},
   {attribute: "circle", tip: "Row组件属性可将骨架设置为圆形，也可以裁剪图片", type: "boolean", options: "true/false", default: "false"}
 ])
 const html=codeToHtml(skeletonCode())

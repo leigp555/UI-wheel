@@ -17,7 +17,7 @@
         <slot name="example"></slot>
       </div>
     </div>
-    <div class="code-container" v-if="state.visible">
+    <div class="code-container" v-if="state.visible" @touchstart.stop="" @touchmove.stop="">
       <h4>代码示例:</h4>
       <slot name="code"></slot>
     </div>
@@ -38,7 +38,7 @@ export default defineComponent({
   },
   setup(props) {
     const state = reactive({
-      visible: false,
+      visible: true,
     })
     const codeVisible=ref<boolean>(false)
     const {center,codeText} = toRefs(props)
@@ -124,6 +124,7 @@ export default defineComponent({
     padding: 30px 30px;
     margin-top: 10px;
     border: 1px solid black;
+    overflow-x: scroll;
     >h4{
       margin-bottom: 5px;
     }

@@ -155,14 +155,13 @@ const imageSrc=["../../public/images/a.jpg","../../public/images/b.jpg","../../p
 export const skeletonCode=()=>`
 <template>
   <Skeleton v-else>
-    <Row :circle="true" :width="40" :height="40">
-      <img src="" alt="">
-    </Row>
-    <Row :width="200" :height="16"/>
-    <Row :width="400"/>
-    <Row/>
-    <Row :width="400"/>
-    <Row/>
+   <Row width="40vw" />
+   <Row width="80vw"/>
+   <Row width="80vw"/>
+   <Row width="80vw"/>
+   <Row/>
+   <Row width="50vw"/>
+   <Row/>
   </Skeleton>
 
 </template>

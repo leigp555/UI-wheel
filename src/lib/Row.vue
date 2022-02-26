@@ -3,7 +3,7 @@
     <div
         class="gulu-skeleton"
         :class="{ circle: circle }"
-        :style="{ width: width + 'px', height: height + 'px' }"
+        :style="{ width ,height}"
     >
       <slot />
     </div>
@@ -17,12 +17,12 @@ export default defineComponent({
   name: "row",
   props: {
     width: {
-      type: Number,
-      default: 500,
+      type: String,
+      default: "80vw",
     },
     height: {
-      type: Number,
-      default: 16,
+      type: String,
+      default: "16px",
     },
     circle: {
       type: Boolean,
