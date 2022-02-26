@@ -17,7 +17,7 @@
 
     </div>
     <div class="content">
-      <aside class="doc-aside" @click="toggle">
+      <aside class="doc-aside" @click="toggle" v-if="visible">
         <router-link to="/intro">介绍</router-link>
         <router-link to="/install">安装</router-link>
         <router-link to="/switch">switch组件</router-link>
@@ -27,7 +27,7 @@
         <router-link to="/carousel">轮播组件</router-link>
         <router-link to="/skeleton">骨架图组件</router-link>
       </aside>
-      <main class="doc-main">
+      <main class="doc-main" @click="hidden">
         <router-view/>
       </main>
     </div>
@@ -36,13 +36,42 @@
 </template>
 
 <script lang="ts" setup>
+import {computed, ref, watchEffect} from "vue";
 
-
+const visible = ref<boolean>(false)
+const htmlBody = document.body;
+const x1 = ref(0)
+const x2 = ref(0)
+const viewWidth = computed(() => {
+  return document.body.clientWidth
+})
 const toggle = (e: Event) => {
   const div = e.target as HTMLDivElement
   div.classList.add("selected")
 }
-
+if(viewWidth.value<500){
+  htmlBody.addEventListener("touchstart", (e) => {
+    x1.value = e.touches[0].clientX
+  })
+  htmlBody.addEventListener("touchmove", (e) => {
+    x2.value = e.changedTouches[0].clientX
+  })
+  watchEffect(() => {
+    const distance = x2.value - x1.value
+    if (distance > 80) {
+      visible.value = true
+    }
+  })
+}else {
+  visible.value=true
+}
+const hidden = () => {
+  if(viewWidth.value<500){
+    x1.value = 0
+    x2.value = 0
+    visible.value = false
+  }
+}
 
 </script>
 
