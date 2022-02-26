@@ -5,7 +5,7 @@
       <h4>在保留当前页面状态的情况下，告知用户并承载相关操作。</h4>
     </template>
     <template v-slot:useAge>
-      <UseAge>
+      <UseAge :codeText="dialogCode()">
         <template v-slot:title>
           <h2>基础用法</h2>
           <h4>Dialog 弹出一个对话框，适合需要定制性更大的场景。</h4>

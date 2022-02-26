@@ -4,7 +4,7 @@
   </div>
   <div class="use-show">
     <div class="action">
-      <button class="copy">复制代码</button>
+      <button class="copy" @click="copy">复制代码</button>
       <div class="code-show">
         <button class="code-visible" @click="showCode" v-if="!state.visible">显示代码</button>
         <button class="code-visible" @click="hidden" v-if="state.visible">隐藏代码</button>
@@ -12,6 +12,7 @@
 
     </div>
     <div class="example">
+      <CodeTip title="复制成功" :codeVisible="codeVisible"/>
       <div class="code" :class="{center:center}">
         <slot name="example"></slot>
       </div>
@@ -24,27 +25,38 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, reactive, toRefs} from "vue";
+import {defineComponent, reactive, ref, toRefs} from "vue";
 import Button from "../lib/Button.vue";
+import CodeTip from './codeTip.vue'
 
 export default defineComponent({
   name: "UseAge",
-  components: {Button},
+  components: {Button,CodeTip},
   props: {
-    center: Boolean
+    center: Boolean,
+    codeText:String
   },
   setup(props) {
     const state = reactive({
       visible: false,
     })
-    const {center} = toRefs(props)
+    const codeVisible=ref<boolean>(false)
+    const {center,codeText} = toRefs(props)
     const showCode = () => {
       state.visible = true
     }
     const hidden = () => {
       state.visible = false
     }
-    return {state, center, showCode, hidden}
+    const copy=()=>{
+      navigator.clipboard.writeText(codeText.value).then(()=>{
+        codeVisible.value=!codeVisible.value
+        setTimeout(()=>{
+          codeVisible.value=!codeVisible.value
+        },1000)
+      });
+    }
+    return {state, center, showCode, hidden,copy,codeVisible}
   }
 })
 </script>

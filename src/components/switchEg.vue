@@ -5,7 +5,7 @@
       <h4>表示两种相互对立的状态间的切换，多用于触发「开/关」。</h4>
     </template>
     <template v-slot:useAge>
-      <UseAge>
+      <UseAge :codeText="switchCode()">
         <template v-slot:title>
           <h2>基础用法</h2>
           <h4>绑定 v-model 到一个 Boolean 类型的变量。 可以使用 active-color 属性与 inactive-color 属性来设置开关的背景色</h4>

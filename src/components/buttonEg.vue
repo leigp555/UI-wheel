@@ -5,7 +5,7 @@
       <h4>常用的操作按钮。</h4>
     </template>
     <template v-slot:useAge>
-      <UseAge>
+      <UseAge :codeText="buttonCode()">
         <template v-slot:title>
           <h2>基础用法</h2>
           <h4>使用 theme、cursor、level、circle 和 loading 来定义按钮的样式。</h4>

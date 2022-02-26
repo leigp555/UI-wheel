@@ -5,7 +5,7 @@
       <h4>分隔内容上有关联但属于不同类别的数据集合。</h4>
     </template>
     <template v-slot:useAge>
-      <UseAge>
+      <UseAge :codeText="tabCode()">
         <template v-slot:title>
           <h2>基础用法</h2>
           <h4>Tabs 组件提供了选项卡功能， 默认选中第一个标签页，你也可以通过 value 属性来指定当前选中的标签页。</h4>
@@ -31,7 +31,7 @@ import Tab from "../lib/Tab.vue";
 import Show from "./Show.vue";
 import UseAge from "./UseAge.vue";
 import {codeToHtml} from "./codeHtml";
-import {switchCode, tabCode} from "../eg/eg";
+import {tabCode} from "../eg/eg";
 
 const selected = ref("标题一")
 const attribute=ref([

@@ -36,6 +36,8 @@
 </template>
 
 <script lang="ts" setup>
+
+
 const toggle = (e: Event) => {
   const div = e.target as HTMLDivElement
   div.classList.add("selected")

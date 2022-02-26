@@ -5,7 +5,7 @@
       <h4>在需要等待加载内容的位置设置一个骨架屏，某些场景下比 Loading 的视觉效果更好。</h4>
     </template>
     <template v-slot:useAge>
-      <UseAge>
+      <UseAge :codeText="skeletonCode()">
         <template v-slot:title>
           <h2>基础用法</h2>
           <h4>结合Skeleton和Row组件就能自定义一张骨架图</h4>
