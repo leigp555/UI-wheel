@@ -8,7 +8,7 @@
     </p>
     <p>或</p>
     <p>
-      <code>yarn install ui-gp</code>
+      <code>yarn add ui-gp</code>
     </p>
     <p>下一节：<a href="/#/get-start">[开始使用]</a></p>
 
