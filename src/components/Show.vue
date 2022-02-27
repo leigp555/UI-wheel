@@ -66,15 +66,15 @@ export default defineComponent({
     padding-bottom: 50px;
     > table {
       width: 100%;
-      table-layout: fixed;
+      table-layout: auto;
       border-collapse: collapse;
       text-align: center;
       & td,th{
-        line-height: 3em;
+        line-height: 1em;
         border-bottom: 1px solid black;
         @media (max-width: 500px) {
-          font-size: 14px;
-          line-height: 1.5em;
+          font-size: 10px;
+          line-height: 2.5em;
         }
       }
     }
