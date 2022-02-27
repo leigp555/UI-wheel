@@ -60,7 +60,7 @@ provide("changeComponentName", changeComponentName)
 const toggle = (e: Event) => {
   const div = e.target as HTMLDivElement
   div.classList.add("selected")
-  if (div.tagName.toLowerCase() === "a") {
+  if (div.tagName.toLowerCase() === "a" && viewWidth.value < 500) {
     visible.value = false
   }
 }
@@ -90,26 +90,26 @@ const hidden = () => {
 const asideVisible = () => {
   visible.value = !visible.value
 }
-if (viewWidth.value < 500) {
-  onMounted(() => {
-    watchEffect(() => {
-      if (visible.value) {
-        htmlMain.value.classList.add("asideOpen")
-        if (htmlAside.value) {
-          if(currentMain.value)currentMain.value.classList.remove("selected")
-          const arr = Array.from(htmlAside.value.children)
-          const div = arr.filter((item) => item.getAttribute("href") === currentComponentName.value)[0] as HTMLDivElement
-          if (div) {
-            currentMain.value = div
-            currentMain.value.classList.add("selected")
-          }
+
+onMounted(() => {
+  watchEffect(() => {
+    if (visible.value) {
+      htmlMain.value.classList.add("asideOpen")
+      if (htmlAside.value) {
+        if (currentMain.value) currentMain.value.classList.remove("selected")
+        const arr = Array.from(htmlAside.value.children)
+        const div = arr.filter((item) => item.getAttribute("href") === currentComponentName.value)[0] as HTMLDivElement
+        if (div) {
+          currentMain.value = div
+          currentMain.value.classList.add("selected")
         }
-      } else {
-        htmlMain.value.classList.remove("asideOpen")
       }
-    })
+    } else {
+      htmlMain.value.classList.remove("asideOpen")
+    }
   })
-}
+})
+
 
 </script>
 
