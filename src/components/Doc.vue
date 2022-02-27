@@ -20,6 +20,7 @@
         <aside class="doc-aside" @click="toggle" v-if="visible" ref="htmlAside">
           <router-link to="/intro">介绍</router-link>
           <router-link to="/install">安装</router-link>
+          <router-link to="/get-start">开始使用</router-link>
           <router-link to="/switch">switch组件</router-link>
           <router-link to="/button">button组件</router-link>
           <router-link to="/dialog">dialog组件</router-link>
@@ -173,10 +174,6 @@ onMounted(() => {
 
         &.selected {
           color: #409eff;
-          background-color: #ecf5ff;
-        }
-
-        &:hover {
           background-color: #ecf5ff;
         }
       }

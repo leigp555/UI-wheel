@@ -10,7 +10,7 @@ import Dialog from "../components/dialogEg.vue";
 import Tab from "../components/tabEg.vue";
 import Carousel from "../components/carouselEg.vue";
 import Skeleton from "../components/skeletonEg.vue";
-
+import GetStart from "../components/get-start.vue"
 const history = createWebHashHistory()
 export const router = createRouter({
     history: history,
@@ -20,6 +20,7 @@ export const router = createRouter({
         {path: "/doc", component: Doc,children:[
                 {path: "/intro", component: Intro},
                 {path: "/install", component: Install},
+                {path: "/get-start", component: GetStart},
                 {path: "/switch", component: Switch},
                 {path: "/button", component: Button},
                 {path: "/dialog", component: Dialog},

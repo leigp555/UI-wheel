@@ -1,16 +1,17 @@
 <template>
   <article class="markdown-body">
-    <h3>安装</h3>
+    <h3>开始使用</h3>
+    <p>请先 <a href="#/doc/install">开始使用</a>本组件库。</p>
 
-    <p>打开终端运行下列命令：</p>
-    <p>
-      <code>npm install ui-gp</code>
+    <p>然后在你的代码中引入组件</p>
+    <p>例如:</p>
+    <p><code>
+      import {Button, Tabs, Tab, Switch, Dialog ...} from "ui-gp"
+
+    </code>
     </p>
-    <p>或</p>
-    <p>
-      <code>yarn install ui-gp</code>
-    </p>
-    <p>下一节：<a href="/#/get-start">[开始使用]</a></p>
+    <p> 就可以使用我提供的组件了。</p>
+
 
   </article>
 </template>
@@ -19,7 +20,7 @@
 import {inject} from "vue";
 
 const updateComponentName = inject("changeComponentName") as Function
-updateComponentName("#/install")
+updateComponentName("#/get-start")
 </script>
 
 <style lang="scss" scoped>
