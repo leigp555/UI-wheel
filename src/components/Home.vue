@@ -88,11 +88,11 @@ export default defineComponent({
   @media (max-width:1200px)and(min-width:900px) {
    width: 900px;
   }
-  @media (max-width:900px )and(min-width: 500px) {
+  @media (max-width:900px )and(min-width: 600px) {
     width: 800px;
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 600px) {
     margin-top: 0;
   }
 
@@ -106,7 +106,7 @@ export default defineComponent({
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     background: linear-gradient(90deg, rgba(110, 133, 173, 1) 0%, rgba(147, 165, 195, 1) 54%, rgba(153, 169, 200, 1) 100%);
-    @media (max-width:500px) {
+    @media (max-width:600px) {
       border-radius: 0;
       padding: 40px 30px;
     }
@@ -127,7 +127,7 @@ export default defineComponent({
     width: 100%;
     height: 300px;
     background: linear-gradient(90deg, rgba(110, 133, 173, 1) 0%, rgba(147, 165, 195, 1) 54%, rgba(153, 169, 200, 1) 100%);
-    @media (max-width:500px) {
+    @media (max-width:600px) {
       height: 200px;
     }
     > .container {
@@ -141,14 +141,14 @@ export default defineComponent({
         top: 60px;
         left: 50%;
         transform: translateX(-150%);
-        @media (max-width:500px) {
+        @media (max-width:600px) {
           top: 10px;
           transform: translateX(-50%);
           text-align: center;
         }
         & li{
           margin-bottom: 30px;
-          @media (max-width:500px) {
+          @media (max-width:600px) {
             margin-bottom: 15px;
           }
         }
@@ -166,7 +166,7 @@ export default defineComponent({
 
         & li:nth-child(3) {
           color: #cedbe9;
-          @media (max-width:500px) {
+          @media (max-width:600px) {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -183,7 +183,7 @@ export default defineComponent({
             border: none;
             background-color: #13192e;
             color: #d6d9e0;
-            @media (max-width:500px) {
+            @media (max-width:600px) {
              margin-right: 0;
             }
           }
@@ -201,14 +201,14 @@ export default defineComponent({
           right: 180px;
           top: 40%;
         }
-        @media (max-width:900px)and(min-width: 500px) {
+        @media (max-width:900px)and(min-width: 600px) {
           max-width: 260px;
           right: 160px;
           top: 42%;
         }
         > img {
           max-width: 100%;
-          @media (max-width:500px) {
+          @media (max-width:600px) {
             display: none;
           }
         }
@@ -218,14 +218,14 @@ export default defineComponent({
 
   > .footer {
     margin-top: 50px;
-    @media (max-width:500px) {
+    @media (max-width:600px) {
       margin: 30px 30px 0 30px;
     }
     > ol {
       display: flex;
       justify-content: center;
       gap: 20px;
-      @media (max-width:500px) {
+      @media (max-width:600px) {
        display: flex;
         flex-direction: column;
       }
@@ -237,7 +237,7 @@ export default defineComponent({
         grid-template-rows: 1fr 1fr 1fr 1fr;
         grid-gap: 30px;
         padding: 0 25px;
-        @media (max-width:500px) {
+        @media (max-width:600px) {
           width: 100%;
           grid-template-columns: 80px;
           grid-template-rows: 1fr 1fr 1fr 1fr;
