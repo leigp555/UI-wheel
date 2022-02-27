@@ -16,7 +16,7 @@
       </a>
     </div>
     <div class="content">
-      <transition name="fade">
+      <transition name="fade" >
         <aside class="doc-aside" @click="toggle" v-if="visible" ref="htmlAside">
           <router-link to="/intro">介绍</router-link>
           <router-link to="/install">安装</router-link>
@@ -28,9 +28,10 @@
           <router-link to="/skeleton">骨架图组件</router-link>
         </aside>
       </transition>
-      <main class="doc-main" @click="hidden" ref="htmlMain">
+      <main class="doc-main"  >
         <router-view/>
       </main>
+      <div class="overflowMain" v-if="visible" @click="hidden" ref="htmlMain"></div>
     </div>
   </div>
 
@@ -94,7 +95,7 @@ const asideVisible = () => {
 onMounted(() => {
   watchEffect(() => {
     if (visible.value) {
-      htmlMain.value.classList.add("asideOpen")
+      if(htmlMain.value) htmlMain.value.classList.add("asideOpen")
       if (htmlAside.value) {
         if (currentMain.value) currentMain.value.classList.remove("selected")
         const arr = Array.from(htmlAside.value.children)
@@ -104,8 +105,6 @@ onMounted(() => {
           currentMain.value.classList.add("selected")
         }
       }
-    } else {
-      htmlMain.value.classList.remove("asideOpen")
     }
   })
 })
@@ -158,7 +157,7 @@ onMounted(() => {
         width: 70vw;
         left: 0;
         padding-top: 70px;
-        z-index: 1;
+        z-index: 10;
         background-color: #ffffff;
       }
 
@@ -189,12 +188,17 @@ onMounted(() => {
       overflow-y: auto;
       @media (max-width: 500px) {
         padding: 30px 10px;
-        &.asideOpen {
-          background-color: rgba(0, 0, 0, .3)
-        }
-        &.asideClose {
-          background-color: #ffffff;
-        }
+      }
+    }
+    >.overflowMain{
+      width: 100%;
+      height: 100vh;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 5;
+      &.asideOpen {
+        background-color: rgba(0, 0, 0, .3)
       }
     }
   }
@@ -209,7 +213,7 @@ onMounted(() => {
 }
 
 .fade-enter-active, .fade-leave-active {
-  transition: all 250ms;
+  transition: all 250ms ease-out;
 }
 
 .fade-enter-from, .fade-leave-to {
