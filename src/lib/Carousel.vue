@@ -42,7 +42,7 @@ export default defineComponent({
   setup(props, context) {
     const {autoPlay, duration, initial, dot, direction, indicator} = toRefs(props)
     const currentIndex = ref(initial.value)
-    const arr = Array.from(context.slots.default!())[0].children!.length as number
+    const arr = Array.from(context.slots.default!()).length as number
     const length = ref<number>(arr)
     const changeCurrentIndex=(index:number)=>{
       currentIndex.value=index

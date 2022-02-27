@@ -23,8 +23,17 @@
                 direction="forward"
                 :indicator="true"
             >
-              <CarItem v-for="(item,index) in imageSrc" :key="index" :index="index">
-                <img :src="item" alt="" class="image">
+              <CarItem :index="0">
+                <img src="../../public/images/a.jpg" alt="" class="image">
+              </CarItem>
+              <CarItem :index="1">
+                <img src="../../public/images/b.jpg" alt="" class="image">
+              </CarItem>
+              <CarItem :index="2">
+                <img src="../../public/images/c.jpg" alt="" class="image">
+              </CarItem>
+              <CarItem :index="3">
+                <img src="../../public/images/d.jpg" alt="" class="image">
               </CarItem>
             </Carousel>
           </div>
