@@ -70,7 +70,7 @@ export default defineComponent({
       border-collapse: collapse;
       text-align: center;
       & td,th{
-        line-height: 1em;
+        line-height: 3em;
         border-bottom: 1px solid black;
         @media (max-width: 500px) {
           font-size: 10px;
