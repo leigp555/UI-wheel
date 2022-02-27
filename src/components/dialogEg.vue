@@ -42,7 +42,7 @@ import {dialogCode} from "../eg/eg";
 
 
 const visible = ref<boolean>(false)
-const updateComponentName=inject("changeComponentName")
+const updateComponentName=inject("changeComponentName") as Function
 updateComponentName("#/dialog")
 const toggle = () => {
   visible.value = !visible.value

@@ -5,7 +5,7 @@ intro
 <script lang="ts" setup>
 import {inject} from "vue";
 
-const updateComponentName=inject("changeComponentName")
+const updateComponentName=inject("changeComponentName") as Function
 updateComponentName("#/intro")
 </script>
 

@@ -43,7 +43,7 @@ import UseAge from "./UseAge.vue";
 import CarItem from "../lib/CarItem.vue";
 import {codeToHtml} from "./codeHtml";
 import {carouselCode} from "../eg/eg";
-const updateComponentName=inject("changeComponentName")
+const updateComponentName=inject("changeComponentName") as Function
 updateComponentName("#/carousel")
 const imageSrc=["../../public/images/a.jpg","../../public/images/b.jpg","../../public/images/c.jpg","../../public/images/d.jpg"]
 const attribute = ref([

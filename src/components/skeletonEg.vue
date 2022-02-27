@@ -54,7 +54,7 @@ import {inject, ref} from "vue";
 import {codeToHtml} from "./codeHtml";
 
 import {skeletonCode} from "../eg/eg";
-const updateComponentName=inject("changeComponentName")
+const updateComponentName=inject("changeComponentName") as Function
 updateComponentName("#/skeleton")
 const loaded = ref<boolean>(false)
 const ajax = (url: string) => {

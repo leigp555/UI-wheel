@@ -32,7 +32,7 @@ import Show from "./Show.vue";
 import UseAge from "./UseAge.vue";
 import {codeToHtml} from "./codeHtml";
 import {tabCode} from "../eg/eg";
-const updateComponentName=inject("changeComponentName")
+const updateComponentName=inject("changeComponentName") as Function
 updateComponentName("#/tab")
 const selected = ref("标题一")
 const attribute=ref([

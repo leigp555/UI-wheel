@@ -57,11 +57,8 @@ import UseAge from "./UseAge.vue";
 import {inject, ref} from "vue";
 import {codeToHtml} from "./codeHtml";
 import {buttonCode} from "../eg/eg";
-
-const updateComponentName=inject("changeComponentName")
+const updateComponentName=inject("changeComponentName") as Function
 updateComponentName("#/button")
-
-
 const attribute = ref([
   {attribute: "theme", tip: "button类型", type: "string", options: "link/text", default: "--"},
   {attribute: "cursor", tip: "鼠标悬浮样式", type: "string", options: "help/wait/crosshair/not-allowed", default: "--"},

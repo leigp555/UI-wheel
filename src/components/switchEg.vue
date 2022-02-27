@@ -31,7 +31,7 @@ import {codeToHtml} from "./codeHtml";
 import {switchCode} from "../eg/eg"
 
 const state = ref<boolean>(false)
-const updateComponentName=inject("changeComponentName")
+const updateComponentName=inject("changeComponentName") as Function
 updateComponentName("#/switch")
 const attribute = ref([
   {attribute: "state", tip: "绑定值，必须是布尔值", type: "boolean", options: "true/false", default: "false"},
