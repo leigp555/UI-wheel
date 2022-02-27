@@ -53,6 +53,9 @@ const toggle = (e: Event) => {
   htmlIntro.classList.remove("selected")
   const div = e.target as HTMLDivElement
   div.classList.add("selected")
+  if(div.tagName.toLowerCase()==="a"){
+     visible.value=false
+  }
 }
 if (viewWidth.value < 500) {
   htmlBody.addEventListener("touchstart", (e) => {
