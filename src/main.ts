@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
+import "../src/icon/icon"
 import App from './App.vue'
 import {router} from "./router/router";
 import "./index.scss"
