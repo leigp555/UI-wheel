@@ -74,21 +74,19 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .outer {
-  min-height: calc(100vh - 2px);
+  height: 100%;
   background-color: #ccd4df;
-  border: 1px solid transparent;
 }
-
 .home-wrap {
   max-width: 1200px;
   margin-right: auto;
   margin-left: auto;
   margin-top: 50px;
   height: 100%;
-  @media (max-width:1200px)and(min-width:900px) {
-   width: 900px;
+  @media (max-width: 1200px) and(min-width: 900px) {
+    width: 900px;
   }
-  @media (max-width:900px )and(min-width: 600px) {
+  @media (max-width: 900px) and(min-width: 600px) {
     width: 800px;
   }
 
@@ -106,10 +104,11 @@ export default defineComponent({
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     background: linear-gradient(90deg, rgba(110, 133, 173, 1) 0%, rgba(147, 165, 195, 1) 54%, rgba(153, 169, 200, 1) 100%);
-    @media (max-width:600px) {
+    @media (max-width: 600px) {
       border-radius: 0;
       padding: 40px 30px;
     }
+
     & .icon {
       width: 1.5em;
       height: 1.5em;
@@ -117,6 +116,7 @@ export default defineComponent({
       fill: currentColor;
       overflow: hidden;
     }
+
     > ol {
       display: flex;
       gap: 20px;
@@ -127,31 +127,35 @@ export default defineComponent({
     width: 100%;
     height: 300px;
     background: linear-gradient(90deg, rgba(110, 133, 173, 1) 0%, rgba(147, 165, 195, 1) 54%, rgba(153, 169, 200, 1) 100%);
-    @media (max-width:600px) {
+    @media (max-width: 600px) {
       height: 200px;
     }
+
     > .container {
       width: 100%;
       height: 100%;
       position: relative;
       top: 0;
       left: 0;
+
       > ol {
         position: absolute;
         top: 60px;
         left: 50%;
         transform: translateX(-150%);
-        @media (max-width:600px) {
+        @media (max-width: 600px) {
           top: 10px;
           transform: translateX(-50%);
           text-align: center;
         }
-        & li{
+
+        & li {
           margin-bottom: 30px;
-          @media (max-width:600px) {
+          @media (max-width: 600px) {
             margin-bottom: 15px;
           }
         }
+
         & li:first-child {
           color: #f8fcfd;
           font-size: 2em;
@@ -166,7 +170,7 @@ export default defineComponent({
 
         & li:nth-child(3) {
           color: #cedbe9;
-          @media (max-width:600px) {
+          @media (max-width: 600px) {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -183,8 +187,8 @@ export default defineComponent({
             border: none;
             background-color: #13192e;
             color: #d6d9e0;
-            @media (max-width:600px) {
-             margin-right: 0;
+            @media (max-width: 600px) {
+              margin-right: 0;
             }
           }
         }
@@ -196,19 +200,20 @@ export default defineComponent({
         top: 35%;
         right: 250px;
         transform: translateY(-50%);
-        @media (max-width:1200px)and(min-width: 900px) {
+        @media (max-width: 1200px) and(min-width: 900px) {
           max-width: 280px;
           right: 180px;
           top: 40%;
         }
-        @media (max-width:900px)and(min-width: 600px) {
+        @media (max-width: 900px) and(min-width: 600px) {
           max-width: 260px;
           right: 160px;
           top: 42%;
         }
+
         > img {
           max-width: 100%;
-          @media (max-width:600px) {
+          @media (max-width: 600px) {
             display: none;
           }
         }
@@ -218,17 +223,19 @@ export default defineComponent({
 
   > .footer {
     margin-top: 50px;
-    @media (max-width:600px) {
+    @media (max-width: 600px) {
       margin: 30px 30px 0 30px;
     }
+
     > ol {
       display: flex;
       justify-content: center;
       gap: 20px;
-      @media (max-width:600px) {
-       display: flex;
+      @media (max-width: 600px) {
+        display: flex;
         flex-direction: column;
       }
+
       > li {
         background-color: #f0f3fd;
         width: 400px;
@@ -237,7 +244,7 @@ export default defineComponent({
         grid-template-rows: 1fr 1fr 1fr 1fr;
         grid-gap: 30px;
         padding: 0 25px;
-        @media (max-width:600px) {
+        @media (max-width: 600px) {
           width: 100%;
           grid-template-columns: 80px;
           grid-template-rows: 1fr 1fr 1fr 1fr;
@@ -253,7 +260,7 @@ export default defineComponent({
           grid-column-end: 2;
           grid-row-start: 2;
           grid-row-end: 5;
-          width:4em;
+          width: 4em;
           height: 4em;
           vertical-align: -0.15em;
           fill: currentColor;

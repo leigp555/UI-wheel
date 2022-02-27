@@ -10,7 +10,7 @@
       README.md。
     </p>
 
-    <p>下一节：<a href="/#/install">安装</a></p>
+    <p>下一节：<a href="#/install">安装</a></p>
   </article>
 </template>
 
@@ -28,5 +28,7 @@ updateComponentName("#/intro")
   max-width: 980px;
   margin: 0 auto;
   padding: 20px;
+  background-color:#ffffff;
+  color: black;
 }
 </style>

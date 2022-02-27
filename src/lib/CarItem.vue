@@ -100,7 +100,7 @@ export default defineComponent({
   opacity: 0;
 }
 .fade-enter-active,.fade-leave-active{
-  transition: all 250ms;
+  transition: all 500ms;
 }
 .fade-enter-from{
   transform: translateX(100%);

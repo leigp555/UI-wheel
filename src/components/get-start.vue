@@ -1,7 +1,7 @@
 <template>
   <article class="markdown-body">
     <h3>开始使用</h3>
-    <p>请先 <a href="/#/install">安装</a>本组件库。</p>
+    <p>请先 <a href="#/install">安装</a>本组件库。</p>
 
     <p>然后在你的代码中引入组件</p>
     <p>例如:</p>
@@ -30,5 +30,7 @@ updateComponentName("#/get-start")
   max-width: 980px;
   margin: 0 auto;
   padding: 20px;
+  background-color:#ffffff;
+  color: black;
 }
 </style>
