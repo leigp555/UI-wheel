@@ -1,8 +1,8 @@
 <template>
   <div class="xx">
     <div class="gulu-tab-wrapper" ref="wrap">
-      <div class="gulu-title">
-        <div v-for="(item,index) in titles" :key="index" :ref="fuck" @click="toggle(item)">{{ item }}</div>
+      <div class="gulu-title" id="titleWrap">
+        <div v-for="(item,index) in titles" :key="index"  @click="toggle(item)">{{ item }}</div>
       </div>
       <span class="indicator" ref="indicator"></span>
       <div class="gulu-content">
@@ -39,8 +39,19 @@ export default defineComponent({
     const toggle = (item: string) => {
       context.emit("update:selected", item)
     }
+    const itemRef = ref<HTMLDivElement[]>([])
+    watchEffect(() => {
+
+    })
     onMounted(() => {
+      const titleWrap = document.getElementById("titleWrap")
+      const titlesEl=Array.from(titleWrap!.children) as HTMLDivElement[]
+      titlesEl.forEach((item)=>{
+        itemRef.value.push(item)
+      })
       watchEffect(() => {
+        const div = itemRef.value.filter((item) => item.innerHTML === selected.value)[0]
+        if(div)element.value=div
         const {width, left: left2} = element.value!.getBoundingClientRect()
         indicator.value!.style.width = width + "px"
         const {left: left1} = wrap.value!.getBoundingClientRect()
@@ -48,14 +59,7 @@ export default defineComponent({
         indicator.value!.style.left = result + "px"
       })
     })
-    const itemRef = ref<HTMLDivElement[]>([])
-    const fuck = (el:HTMLDivElement) => {
-      if(el) itemRef.value.push(el)
-    }
-    watchEffect(() => {
-      element.value = itemRef.value.filter((item) => item.innerText === selected.value)[0]
-    })
-    return {titles, selected, selectedComponent, toggle, indicator, wrap, fuck}
+    return {titles, selected, selectedComponent, toggle, indicator, wrap}
   }
 })
 </script>
