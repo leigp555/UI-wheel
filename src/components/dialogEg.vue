@@ -36,12 +36,14 @@ import Button from "../lib/Button.vue";
 import Dialog from "../lib/Dialog.vue";
 import Show from "./Show.vue";
 import UseAge from "./UseAge.vue";
-import {ref} from "vue";
+import {inject, ref} from "vue";
 import {codeToHtml} from "./codeHtml";
 import {dialogCode} from "../eg/eg";
 
 
 const visible = ref<boolean>(false)
+const updateComponentName=inject("changeComponentName")
+updateComponentName("#/dialog")
 const toggle = () => {
   visible.value = !visible.value
 }

@@ -37,12 +37,14 @@
 
 <script lang="ts" setup>
 import Carousel from "../lib/Carousel.vue";
-import {ref} from "vue";
+import {inject, ref} from "vue";
 import Show from "./Show.vue";
 import UseAge from "./UseAge.vue";
 import CarItem from "../lib/CarItem.vue";
 import {codeToHtml} from "./codeHtml";
 import {carouselCode} from "../eg/eg";
+const updateComponentName=inject("changeComponentName")
+updateComponentName("#/carousel")
 const imageSrc=["../../public/images/a.jpg","../../public/images/b.jpg","../../public/images/c.jpg","../../public/images/d.jpg"]
 const attribute = ref([
   {attribute: "autoPlay", tip: "是否自动播放", type: "boolean", options: "true/false", default: "true"},

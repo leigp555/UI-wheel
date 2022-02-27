@@ -23,7 +23,7 @@
 </template>
 
 <script lang="ts" setup>
-import {ref} from "vue";
+import {inject, ref} from "vue";
 import Switch from "../lib/Switch.vue";
 import Show from "./Show.vue";
 import UseAge from "./UseAge.vue";
@@ -31,6 +31,8 @@ import {codeToHtml} from "./codeHtml";
 import {switchCode} from "../eg/eg"
 
 const state = ref<boolean>(false)
+const updateComponentName=inject("changeComponentName")
+updateComponentName("#/switch")
 const attribute = ref([
   {attribute: "state", tip: "绑定值，必须是布尔值", type: "boolean", options: "true/false", default: "false"},
   {attribute: "active-color", tip: "switch的值为 on 时的颜色", type: "string", options: "--", default: "#409eff"},

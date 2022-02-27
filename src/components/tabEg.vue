@@ -25,14 +25,15 @@
 </template>
 
 <script lang="ts" setup>
-import {ref} from "vue";
+import {inject, ref} from "vue";
 import Tabs from "../lib/Tabs.vue";
 import Tab from "../lib/Tab.vue";
 import Show from "./Show.vue";
 import UseAge from "./UseAge.vue";
 import {codeToHtml} from "./codeHtml";
 import {tabCode} from "../eg/eg";
-
+const updateComponentName=inject("changeComponentName")
+updateComponentName("#/tab")
 const selected = ref("标题一")
 const attribute=ref([
   {attribute:"selected",tip:"绑定值，值为所设置的插槽中的title",type:"string",options:"插槽内的title",default:""},

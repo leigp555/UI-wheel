@@ -17,8 +17,8 @@
     </div>
     <div class="content">
       <transition name="fade">
-        <aside class="doc-aside" @click="toggle" v-if="visible">
-          <router-link to="/intro" class="selected" id="gulu-intro">介绍</router-link>
+        <aside class="doc-aside" @click="toggle" v-if="visible" ref="htmlAside">
+          <router-link to="/intro">介绍</router-link>
           <router-link to="/install">安装</router-link>
           <router-link to="/switch">switch组件</router-link>
           <router-link to="/button">button组件</router-link>
@@ -37,24 +37,31 @@
 </template>
 
 <script lang="ts" setup>
-import {computed, onMounted, ref, watchEffect} from "vue";
+import {computed, onMounted, provide, ref, watchEffect} from "vue";
 
 const visible = ref<boolean>(false)
-const htmlMain=ref<HTMLDivElement>()
-
+const htmlMain = ref<HTMLDivElement>()
+const htmlAside = ref<HTMLDivElement>()
+const currentMain = ref<HTMLDivElement>()
 const htmlBody = document.body;
 const x1 = ref(0)
 const x2 = ref(0)
 const viewWidth = computed(() => {
   return document.body.clientWidth
 })
+
+const currentComponentName = ref<string>()
+const changeComponentName = (name) => {
+  currentComponentName.value = name
+}
+provide("changeComponentName", changeComponentName)
+
+
 const toggle = (e: Event) => {
-  const htmlIntro = document.getElementById("gulu-intro")
-  htmlIntro.classList.remove("selected")
   const div = e.target as HTMLDivElement
   div.classList.add("selected")
-  if(div.tagName.toLowerCase()==="a"){
-     visible.value=false
+  if (div.tagName.toLowerCase() === "a") {
+    visible.value = false
   }
 }
 if (viewWidth.value < 500) {
@@ -83,12 +90,21 @@ const hidden = () => {
 const asideVisible = () => {
   visible.value = !visible.value
 }
-if(viewWidth.value<500){
-  onMounted(()=>{
-    watchEffect(()=>{
-      if(visible.value){
+if (viewWidth.value < 500) {
+  onMounted(() => {
+    watchEffect(() => {
+      if (visible.value) {
         htmlMain.value.classList.add("asideOpen")
-      }else {
+        if (htmlAside.value) {
+          if(currentMain.value)currentMain.value.classList.remove("selected")
+          const arr = Array.from(htmlAside.value.children)
+          const div = arr.filter((item) => item.getAttribute("href") === currentComponentName.value)[0] as HTMLDivElement
+          if (div) {
+            currentMain.value = div
+            currentMain.value.classList.add("selected")
+          }
+        }
+      } else {
         htmlMain.value.classList.remove("asideOpen")
       }
     })
@@ -173,10 +189,10 @@ if(viewWidth.value<500){
       overflow-y: auto;
       @media (max-width: 500px) {
         padding: 30px 10px;
-        &.asideOpen{
-         background-color:rgba(0,0,0,.3)
+        &.asideOpen {
+          background-color: rgba(0, 0, 0, .3)
         }
-        &.asideClose{
+        &.asideClose {
           background-color: #ffffff;
         }
       }

@@ -2,12 +2,11 @@
 install
 </template>
 
-<script lang="ts">
-import {defineComponent} from "vue";
+<script lang="ts" setup>
+import {inject} from "vue";
 
-export default defineComponent({
-  name: "install"
-})
+const updateComponentName=inject("changeComponentName")
+updateComponentName("#/install")
 </script>
 
 <style lang="scss" scoped>

@@ -50,11 +50,12 @@ import Row from "../lib/Row.vue";
 import Skeleton from "../lib/Skeleton.vue";
 import Show from "./Show.vue";
 import UseAge from "./UseAge.vue";
-import {ref} from "vue";
+import {inject, ref} from "vue";
 import {codeToHtml} from "./codeHtml";
 
 import {skeletonCode} from "../eg/eg";
-
+const updateComponentName=inject("changeComponentName")
+updateComponentName("#/skeleton")
 const loaded = ref<boolean>(false)
 const ajax = (url: string) => {
   return new Promise((resolve, reject) => {

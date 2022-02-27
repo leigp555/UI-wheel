@@ -54,9 +54,13 @@
 import Button from "../lib/Button.vue";
 import Show from "./Show.vue";
 import UseAge from "./UseAge.vue";
-import {ref} from "vue";
+import {inject, ref} from "vue";
 import {codeToHtml} from "./codeHtml";
 import {buttonCode} from "../eg/eg";
+
+const updateComponentName=inject("changeComponentName")
+updateComponentName("#/button")
+
 
 const attribute = ref([
   {attribute: "theme", tip: "button类型", type: "string", options: "link/text", default: "--"},

@@ -2,12 +2,11 @@
 intro
 </template>
 
-<script lang="ts">
-import {defineComponent} from "vue";
+<script lang="ts" setup>
+import {inject} from "vue";
 
-export default defineComponent({
-  name: "intro"
-})
+const updateComponentName=inject("changeComponentName")
+updateComponentName("#/intro")
 </script>
 
 <style lang="scss" scoped>
