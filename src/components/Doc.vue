@@ -61,11 +61,11 @@ provide("changeComponentName", changeComponentName)
 const toggle = (e: Event) => {
   const div = e.target as HTMLDivElement
   div.classList.add("selected")
-  if (div.tagName.toLowerCase() === "a" && viewWidth.value < 500) {
+  if (div.tagName.toLowerCase() === "a" && viewWidth.value < 600) {
     visible.value = false
   }
 }
-if (viewWidth.value < 500) {
+if (viewWidth.value < 600) {
   htmlBody.addEventListener("touchstart", (e) => {
     x1.value = e.touches[0].clientX
   })
@@ -82,7 +82,7 @@ if (viewWidth.value < 500) {
   visible.value = true
 }
 const hidden = () => {
-  if (viewWidth.value < 500) {
+  if (viewWidth.value < 600) {
     x1.value = 0
     x2.value = 0
     visible.value = false
@@ -130,7 +130,7 @@ onMounted(() => {
     align-items: center;
     padding: 0 10px;
     background: linear-gradient(90deg, rgba(110, 133, 173, 1) 0%, rgba(147, 165, 195, 1) 54%, rgba(153, 169, 200, 1) 100%);
-    @media (min-width: 500px) {
+    @media (min-width: 600px) {
       > svg:nth-child(1) {
         display: none;
       }
@@ -151,7 +151,7 @@ onMounted(() => {
       padding: 20px 0;
       border-right: 1px solid black;
       overflow-y: auto;
-      @media (max-width: 500px) {
+      @media (max-width: 600px) {
         position: absolute;
         top: 0;
         width: 70vw;
@@ -164,7 +164,7 @@ onMounted(() => {
       > a {
         display: block;
         text-align: center;
-        @media (max-width: 500px) {
+        @media (max-width: 600px) {
           text-align: left;
           padding: 0 30px;
         }
@@ -186,7 +186,7 @@ onMounted(() => {
       width: 100%;
       padding: 30px 100px;
       overflow-y: auto;
-      @media (max-width: 500px) {
+      @media (max-width: 600px) {
         padding: 30px 10px;
       }
     }
@@ -197,6 +197,9 @@ onMounted(() => {
       top: 0;
       left: 0;
       z-index: 5;
+      @media (min-width: 600px) {
+        display: none;
+      }
       &.asideOpen {
         background-color: rgba(0, 0, 0, .3)
       }

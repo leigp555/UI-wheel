@@ -27,7 +27,6 @@ updateComponentName("#/intro")
   min-width: 200px;
   max-width: 980px;
   margin: 0 auto;
-  padding: 45px;
-  background-color: transparent;
+  padding: 20px;
 }
 </style>
