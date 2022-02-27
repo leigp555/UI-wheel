@@ -52,7 +52,7 @@ const viewWidth = computed(() => {
 })
 
 const currentComponentName = ref<string>()
-const changeComponentName = (name) => {
+const changeComponentName = (name:string) => {
   currentComponentName.value = name
 }
 provide("changeComponentName", changeComponentName)
