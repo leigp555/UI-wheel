@@ -18,8 +18,9 @@
       </a>
     </div>
     <div class="content">
-      <transition name="fade" >
+      <transition name="fade">
         <aside class="doc-aside" @click="toggle" v-if="visible" ref="htmlAside">
+          <div class="aside-top-color"></div>
           <router-link to="/intro">介绍</router-link>
           <router-link to="/install">安装</router-link>
           <router-link to="/get-start">开始使用</router-link>
@@ -31,7 +32,7 @@
           <router-link to="/skeleton">骨架图组件</router-link>
         </aside>
       </transition>
-      <main class="doc-main"  >
+      <main class="doc-main">
         <router-view/>
       </main>
       <div class="overflowMain" v-if="visible" @click="hidden" ref="htmlMain"></div>
@@ -55,7 +56,7 @@ const viewWidth = computed(() => {
 })
 
 const currentComponentName = ref<string>()
-const changeComponentName = (name:string) => {
+const changeComponentName = (name: string) => {
   currentComponentName.value = name
 }
 provide("changeComponentName", changeComponentName)
@@ -98,7 +99,7 @@ const asideVisible = () => {
 onMounted(() => {
   watchEffect(() => {
     if (visible.value) {
-      if(htmlMain.value) htmlMain.value.classList.add("asideOpen")
+      if (htmlMain.value) htmlMain.value.classList.add("asideOpen")
       if (htmlAside.value) {
         if (currentMain.value) currentMain.value.classList.remove("selected")
         const arr = Array.from(htmlAside.value.children)
@@ -159,9 +160,20 @@ onMounted(() => {
         top: 0;
         width: 70vw;
         left: 0;
-        padding-top: 70px;
+        padding: 0;
         z-index: 10;
         background-color: #ffffff;
+      }
+
+      .aside-top-color {
+        width: 100%;
+        height: 50px;
+        margin-bottom: 20px;
+        display: none;
+        @media (max-width: 600px) {
+          display: block;
+        }
+        background: linear-gradient(90deg, rgba(110, 133, 173, 1) 0%, rgba(147, 165, 195, 1) 54%, rgba(153, 169, 200, 1) 100%);
       }
 
       > a {
@@ -189,7 +201,8 @@ onMounted(() => {
         padding: 30px 10px;
       }
     }
-    >.overflowMain{
+
+    > .overflowMain {
       width: 100%;
       height: 100vh;
       position: absolute;
@@ -199,6 +212,7 @@ onMounted(() => {
       @media (min-width: 600px) {
         display: none;
       }
+
       &.asideOpen {
         background-color: rgba(0, 0, 0, .3)
       }
