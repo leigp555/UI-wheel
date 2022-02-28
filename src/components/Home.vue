@@ -196,6 +196,7 @@ export default defineComponent({
             color: #d6d9e0;
             @media (max-width: 600px) {
               margin-right: 0;
+              font-size: 14px;
             }
           }
         }
