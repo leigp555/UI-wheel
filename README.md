@@ -1,4 +1,4 @@
-###安装
+## Install
 ```shell
 $ yarn global add vite 
 ```
@@ -18,12 +18,12 @@ $ yarn dev
 $ yarn add ui-gp
  ```
 
-###引入举例
+## Import
 ```shell
 $ import Button from "ui-gp/src/lib/Button
 ```
 
-###使用示例
+## Example
 ```html
 <template>
     <Button>toggle</Button>
