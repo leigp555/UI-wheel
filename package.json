@@ -1,7 +1,7 @@
 {
-  "name": "gulux",
-  "private": true,
-  "version": "0.0.0",
+  "name": "ui-gp",
+  "private": false,
+  "version": "0.0.1",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
@@ -12,6 +12,8 @@
     "vue": "^3.2.25",
     "vue-router": "^4.0.12"
   },
+  "files": ["src/lib/*/*"],
+  "main": "src/main.ts",
   "devDependencies": {
     "github-markdown-css": "^5.1.0",
     "@vitejs/plugin-vue": "^2.2.0",

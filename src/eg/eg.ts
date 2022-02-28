@@ -7,7 +7,7 @@ export const switchCode=()=>`
 </template>
 
 <script lang="ts" setup>
-import Switch from "../lib/Switch.vue";
+import Switch from "ui-gp/src/lib/Switch.vue";
 import {ref} from "vue";
 const state = ref<boolean>(false)
 
@@ -52,7 +52,7 @@ export const buttonCode=()=>`
 </template>
 
 <script lang="ts" setup>
-import Button from "../lib/Button.vue";
+import Button from "ui-gp/src/lib/Button.vue";
 </script>
 
 <style lang="scss" scoped>
@@ -79,8 +79,8 @@ export const dialogCode=()=>`
 </template>
 
 <script lang="ts" setup>
-import Dialog from "../lib/Dialog.vue";
-import Button from "../lib/Button.vue";
+import Dialog from "ui-gp/src/lib/Dialog.vue";
+import Button from "ui-gp/src/lib/Button.vue";
 import {ref} from "vue";
 const visible = ref<boolean>(false)
 const toggle = () => {
@@ -107,8 +107,8 @@ export const tabCode=()=>`
 </template>
 
 <script lang="ts" setup>
-import Tabs from "../lib/Tabs.vue";
-import Tab from "../lib/Tab.vue";
+import Tabs from "ui-gp/src/lib/Tabs.vue";
+import Tab from "ui-gp/src/lib/Tab.vue";
 import {ref} from "vue";
 const selected = ref("标题一")
 
@@ -121,25 +121,34 @@ const selected = ref("标题一")
 export const carouselCode=()=>`
 <template>
   <div class="carousel">
-    <Carousel
-        :autoPlay="true"
-        :duration="3000"
-        :initial="0"
-        :dot="true"
-        direction="forward"
-        :indicator="true"
-    >
-      <CarItem v-for="(item,index) in imageSrc" :key="index" :index="index">
-        <img :src="item" alt="">
-      </CarItem>
-    </Carousel>
+  <Carousel
+  :autoPlay="true"
+  :duration="3000"
+  :initial="0"
+  :dot="true"
+  direction="forward"
+  :indicator="true"
+>
+<CarItem :index="0">
+  <img src="../../public/images/a.jpg" alt="" class="image">
+  </CarItem>
+  <CarItem :index="1">
+  <img src="../../public/images/b.jpg" alt="" class="image">
+  </CarItem>
+  <CarItem :index="2">
+  <img src="../../public/images/c.jpg" alt="" class="image">
+  </CarItem>
+  <CarItem :index="3">
+  <img src="../../public/images/d.jpg" alt="" class="image">
+  </CarItem>
+</Carousel>
   </div>
 
 </template>
 
 <script lang="ts" setup>
-import Carousel from "../lib/Carousel.vue";
-import CarItem from "../lib/CarItem.vue";
+import Carousel from "ui-gp/src/lib/Carousel.vue";
+import CarItem from "ui-gp/src/lib/CarItem.vue";
 const imageSrc=["../../public/images/a.jpg","../../public/images/b.jpg","../../public/images/c.jpg","../../public/images/d.jpg"]
 
 </script>
@@ -167,8 +176,8 @@ export const skeletonCode=()=>`
 </template>
 
 <script lang="ts" setup>
-import Skeleton from "../lib/Skeleton.vue";
-import Row from "../lib/Row.vue";
+import Skeleton from "ui-gp/src/lib/Skeleton.vue";
+import Row from "ui-gp/src/lib/Row.vue";
 </script>
 
 <style lang="scss" scoped>
