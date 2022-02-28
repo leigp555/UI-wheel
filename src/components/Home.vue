@@ -251,6 +251,9 @@ export default defineComponent({
         grid-template-rows: 1fr 1fr 1fr 1fr;
         grid-gap: 30px;
         padding: 0 25px;
+        @media (max-width: 900px) and(min-width: 600px) {
+           grid-gap: 20px;
+        }
         @media (max-width: 600px) {
           width: 100%;
           grid-template-columns: 80px;

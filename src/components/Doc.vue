@@ -19,8 +19,7 @@
     </div>
     <div class="content">
       <transition name="fade">
-        <aside class="doc-aside" @click="toggle" v-if="visible" ref="htmlAside">
-          <div class="aside-top-color"></div>
+        <aside class="doc-aside" @click="toggle" :class="{'open':visible}"  ref="htmlAside">
           <router-link to="/intro">介绍</router-link>
           <router-link to="/install">安装</router-link>
           <router-link to="/get-start">开始使用</router-link>
@@ -152,13 +151,6 @@ onMounted(() => {
     height: calc(100% - 50px);
 
     > .doc-aside {
-      -moz-transform: translateZ(0);
-      -ms-transform: translateZ(0);
-      -o-transform: translateZ(0);
-      -webkit-perspective: 1000px;
-      -moz-perspective: 1000px;
-      perspective: 1000px;
-      -webkit-transform-style: preserve-3d;
       width: 200px;
       height: 100%;
       display: flex;
@@ -168,26 +160,22 @@ onMounted(() => {
       border-right: 1px solid black;
       overflow-y: auto;
       @media (max-width: 600px) {
+        perspective: 1000px;
+        -webkit-transform-style: preserve-3d;
         position: absolute;
-        top: 0;
+        top: 50px;
+        height: calc(100% - 50px);
         width: 70vw;
+        transform: translateX(-70vw);
         left: 0;
         padding: 0;
         z-index: 10;
+        transition: all 250ms linear;
         background-color: #ffffff;
-      }
-
-      .aside-top-color {
-        width: 100%;
-        height: 50px;
-        margin-bottom: 20px;
-        display: none;
-        @media (max-width: 600px) {
-          display: block;
+        &.open{
+          transform: translateX(0);
         }
-        background: linear-gradient(90deg, rgba(110, 133, 173, 1) 0%, rgba(147, 165, 195, 1) 54%, rgba(153, 169, 200, 1) 100%);
       }
-
       > a {
         display: block;
         text-align: center;
@@ -216,15 +204,14 @@ onMounted(() => {
 
     > .overflowMain {
       width: 100%;
-      height: 100vh;
+      height: calc(100% - 50px);
       position: absolute;
-      top: 0;
+      top: 50px;
       left: 0;
       z-index: 5;
       @media (min-width: 600px) {
         display: none;
       }
-
       &.asideOpen {
         background-color: rgba(0, 0, 0, .3)
       }
@@ -238,22 +225,5 @@ onMounted(() => {
   vertical-align: -0.15em;
   fill: currentColor;
   overflow: hidden;
-}
-
-.fade-enter-active, .fade-leave-active {
-  -moz-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  -o-transform: translateZ(0);
-  transform: translateZ(0);
-  -webkit-perspective: 1000px;
-  -moz-perspective: 1000px;
-  perspective: 1000px;
-  -webkit-transform-style: preserve-3d;
-  transition: all 250ms linear;
-}
-
-.fade-enter-from, .fade-leave-to {
-
-  transform: translateX(-200px);
 }
 </style>
