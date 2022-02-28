@@ -73,7 +73,7 @@ export default defineComponent({
         line-height: 3em;
         border-bottom: 1px solid black;
         @media (max-width: 500px) {
-          font-size: 10px;
+          font-size: 14px;
           line-height: 2.5em;
         }
       }

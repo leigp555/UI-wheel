@@ -19,7 +19,7 @@
     </div>
     <div class="content">
       <transition name="fade">
-        <aside class="doc-aside" @click="toggle" :class="{'open':visible}"  ref="htmlAside">
+        <aside class="doc-aside" @click="toggle" :class="{'open':visible}" ref="htmlAside">
           <router-link to="/intro">介绍</router-link>
           <router-link to="/install">安装</router-link>
           <router-link to="/get-start">开始使用</router-link>
@@ -48,8 +48,8 @@ const htmlMain = ref<HTMLDivElement>()
 const htmlAside = ref<HTMLDivElement>()
 const currentMain = ref<HTMLDivElement>()
 const htmlBody = document.body;
-const x1 = ref(0)
-const x2 = ref(0)
+const x1 = ref(40)
+const x2 = ref(40)
 const viewWidth = computed(() => {
   return document.body.clientWidth
 })
@@ -70,19 +70,22 @@ const toggle = (e: Event) => {
 }
 if (viewWidth.value < 600) {
   htmlBody.addEventListener("touchstart", (e) => {
-    if(e.touches[0].clientX<150){
+    if (e.touches[0].clientX < 100 && e.touches[0].clientX>40) {
       x1.value = e.touches[0].clientX
     }
   })
   htmlBody.addEventListener("touchmove", (e) => {
-    if(e.changedTouches[0].clientX<150){
+    if (e.changedTouches[0].clientX < 100 && e.changedTouches[0].clientX>40) {
       x2.value = e.changedTouches[0].clientX
     }
   })
   watchEffect(() => {
-
     const distance = x2.value - x1.value
-    if (distance > 100) {
+    console.log(x1.value);
+    console.log(x2.value);
+    console.log(distance);
+    console.log("----");
+    if (distance > 30) {
       visible.value = true
     }
   })
@@ -91,8 +94,8 @@ if (viewWidth.value < 600) {
 }
 const hidden = () => {
   if (viewWidth.value < 600) {
-    x1.value = 0
-    x2.value = 0
+    x1.value = 40
+    x2.value = 40
     visible.value = false
   }
 }
@@ -172,10 +175,11 @@ onMounted(() => {
         z-index: 10;
         transition: all 250ms linear;
         background-color: #ffffff;
-        &.open{
+        &.open {
           transform: translateX(0);
         }
       }
+
       > a {
         display: block;
         text-align: center;
@@ -212,6 +216,7 @@ onMounted(() => {
       @media (min-width: 600px) {
         display: none;
       }
+
       &.asideOpen {
         background-color: rgba(0, 0, 0, .3)
       }
