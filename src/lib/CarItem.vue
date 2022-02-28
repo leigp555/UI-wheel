@@ -1,7 +1,7 @@
 <template>
   <div class="gulu-carousel-wrap" ref="element">
     <transition name="fade" mode="out-in">
-      <div class="carItem" v-if="selfIndex===currentIndex" >
+      <div class="carItem" v-show="selfIndex===currentIndex" >
         <transition name="fadeX">
           <Indicator position="left" class="left" @click="toggleLeft" v-if="visible"/>
         </transition>
