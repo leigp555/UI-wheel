@@ -85,6 +85,9 @@ export default defineComponent({
   position: absolute;
   top: 0;
   left: 50%;
+  @media (max-width: 600px) {
+    width: 100%;
+  }
   transform: translateX(-50%) ;
   height: 100%;
   @media (max-width: 1200px) and(min-width: 900px) {
@@ -94,9 +97,7 @@ export default defineComponent({
     width: 800px;
   }
 
-  @media (max-width: 600px) {
-    margin-top: 0;
-  }
+
 
   > .home-nav {
     width: 100%;
@@ -110,6 +111,7 @@ export default defineComponent({
     border-top-right-radius: 20px;
     background: linear-gradient(90deg, rgba(110, 133, 173, 1) 0%, rgba(147, 165, 195, 1) 54%, rgba(153, 169, 200, 1) 100%);
     @media (max-width: 600px) {
+      margin-top: 0;
       border-radius: 0;
       padding: 40px 30px;
     }
