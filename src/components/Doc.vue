@@ -71,12 +71,17 @@ const toggle = (e: Event) => {
 }
 if (viewWidth.value < 600) {
   htmlBody.addEventListener("touchstart", (e) => {
-    x1.value = e.touches[0].clientX
+    if(e.touches[0].clientX<150){
+      x1.value = e.touches[0].clientX
+    }
   })
   htmlBody.addEventListener("touchmove", (e) => {
-    x2.value = e.changedTouches[0].clientX
+    if(e.changedTouches[0].clientX<150){
+      x2.value = e.changedTouches[0].clientX
+    }
   })
   watchEffect(() => {
+
     const distance = x2.value - x1.value
     if (distance > 80) {
       visible.value = true
