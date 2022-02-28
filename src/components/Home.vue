@@ -76,12 +76,16 @@ export default defineComponent({
 .outer {
   height: 100%;
   background-color: #ccd4df;
+  position: relative;
 }
 .home-wrap {
   max-width: 1200px;
   margin-right: auto;
   margin-left: auto;
-  margin-top: 50px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) ;
   height: 100%;
   @media (max-width: 1200px) and(min-width: 900px) {
     width: 900px;
@@ -98,6 +102,7 @@ export default defineComponent({
     width: 100%;
     height: 50px;
     display: flex;
+    margin-top: 50px;
     justify-content: space-between;
     align-items: center;
     padding: 50px 50px;
