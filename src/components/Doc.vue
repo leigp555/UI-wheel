@@ -9,10 +9,9 @@
           <use xlink:href="#icon-logo"></use>
         </svg>
       </router-link>
-      <a href="">
+      <a href="https://github.com/leigp555/UI-wheel.git">
         <svg class="icon" aria-hidden="true">
           <use xlink:href="#icon-github-fill">
-            <a href="https://github.com/leigp555/UI-wheel.git"></a>
           </use>
         </svg>
       </a>
