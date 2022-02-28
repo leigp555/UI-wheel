@@ -83,7 +83,7 @@ if (viewWidth.value < 600) {
   watchEffect(() => {
 
     const distance = x2.value - x1.value
-    if (distance > 80) {
+    if (distance > 100) {
       visible.value = true
     }
   })
@@ -152,6 +152,13 @@ onMounted(() => {
     height: calc(100% - 50px);
 
     > .doc-aside {
+      -moz-transform: translateZ(0);
+      -ms-transform: translateZ(0);
+      -o-transform: translateZ(0);
+      -webkit-perspective: 1000px;
+      -moz-perspective: 1000px;
+      perspective: 1000px;
+      -webkit-transform-style: preserve-3d;
       width: 200px;
       height: 100%;
       display: flex;
@@ -234,10 +241,19 @@ onMounted(() => {
 }
 
 .fade-enter-active, .fade-leave-active {
-  transition: all 250ms ease-out;
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-perspective: 1000px;
+  -moz-perspective: 1000px;
+  perspective: 1000px;
+  -webkit-transform-style: preserve-3d;
+  transition: all 250ms linear;
 }
 
 .fade-enter-from, .fade-leave-to {
+
   transform: translateX(-200px);
 }
 </style>
